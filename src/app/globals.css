@@ -39,6 +39,31 @@ body {
   color: white;
 }
 
+/* Custom primary color utilities */
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.bg-primary\/10 {
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.bg-primary\/12 {
+  background-color: color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.bg-primary\/13 {
+  background-color: color-mix(in srgb, var(--primary) 13%, transparent);
+}
+
+.bg-dark {
+  background-color: var(--bg-dark);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
