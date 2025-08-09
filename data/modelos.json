@@ -1,0 +1,153 @@
+{
+  "modelos": [
+    {
+      "id": "titan-150",
+      "nombre": "AgriVolt Titan 150",
+      "claim": "Dron agrícola de alta capacidad para grandes extensiones",
+      "descripcion": "Dron agrícola insignia con tanque de 70 L y flujo de 40 L/min. Radar 360°, FPV 2K, esparcido 100 L hasta 240 kg/min. Ideal para grandes extensiones.",
+      "img": "/img/titan-150.webp",
+      "sku": "AV-T150",
+      "slug": "titan-150",
+      "precio_desde": "Desde $185,000 USD",
+      "bullets": [
+        "Tanque 70 L, flujo hasta 40 L/min",
+        "Radar 360° H / 180° V, evitación a 13.8 m/s",
+        "Esparcido 100 L, hasta 240 kg/min",
+        "FPV 2K con iluminación IR para noche",
+        "Protección IP67/IPX6K"
+      ],
+      "especificaciones": {
+        "tanque_spray": "70 L (73 L máx.)",
+        "flujo_max": "40 L/min ±5%",
+        "tamano_gota": "10–300 μm (ajuste por boquilla)",
+        "esparcido": "Tolva 100 L; hasta 240 kg/min",
+        "percepcion": "Radar 360° H / 180° V, lidar frontal",
+        "fpv": "2K/30 fps H.265 + luces IR (noche)",
+        "velocidad_max": "13.8 m/s",
+        "proteccion": "Módulos IP67; aeronave IPX6K",
+        "mtow": "145 kg (spray) / 149.9 kg (spread/lift)",
+        "peso_con_bateria": "75 kg",
+        "dimensiones_operacion": "3375 × 3510 × 950 mm",
+        "dimensiones_plegado": "1325 × 795 × 950 mm",
+        "autonomia": "19 min 30 s (sin carga)",
+        "radio_vuelo": "2000 m",
+        "ancho_pulverizacion": "4–15 m"
+      },
+      "usos_recomendados": [
+        "Haciendas de gran escala",
+        "Cultivos extensivos (maíz, trigo, caña)",
+        "Frutales de gran porte",
+        "Fertilización pesada",
+        "Siembra y cal agrícola"
+      ]
+    },
+    {
+      "id": "pro-100",
+      "nombre": "AgriVolt Pro 100", 
+      "claim": "El equilibrio ideal para huertos y parcelas medianas",
+      "descripcion": "Tanque de 45 L (60 L opc.) y 24 L/min. RTK, radar 360°, izaje hasta 60 kg y esparcido de alta precisión. Para operación multi-escenario.",
+      "img": "/img/pro-100.webp",
+      "sku": "AV-P100",
+      "slug": "pro-100",
+      "precio_desde": "Desde $125,000 USD",
+      "bullets": [
+        "Tanque 45 L (60 L opcional), 24 L/min",
+        "Compacto con alcance profesional",
+        "Radar/lidar y planificación inteligente",
+        "Esparcido rápido hasta 110 kg/min",
+        "Izaje hasta 60 kg"
+      ],
+      "especificaciones": {
+        "tanque_spray": "45 L (opción 60 L)",
+        "flujo_max": "24 L/min ±5%",
+        "tamano_gota": "10–300 μm",
+        "esparcido": "Descarga hasta 110 kg/min (módulo granular)",
+        "izaje": "Hasta 60 kg",
+        "percepcion": "RTK, radar 360°, lidar",
+        "velocidad_max": "13.8 m/s",
+        "peso_con_bateria": "54.6 kg",
+        "dimensiones_operacion": "1640 × 1830 × 820 mm",
+        "dimensiones_plegado": "1200 × 670 × 820 mm",
+        "autonomia": "14 min 15 s (sin carga)",
+        "radio_vuelo": "3 km",
+        "ancho_pulverizacion": "4–10 m",
+        "carga_util_max": "100 kg (spray) / 105 kg (spread)"
+      },
+      "usos_recomendados": [
+        "Huertos medianos",
+        "Franjas en ladera", 
+        "Hortalizas",
+        "Aplicaciones mixtas (pulverización + esparcido)",
+        "Operación con un solo piloto"
+      ]
+    },
+    {
+      "id": "edge-70",
+      "nombre": "AgriVolt Edge 70",
+      "claim": "Compacto, potente y listo para operar en solitario",
+      "descripcion": "Tanque de 37.5 L y 24 L/min, visión compuesta para evitar obstáculos de 1 cm y esparcido 70 L. Eficiente para huertos y parcelas medianas.",
+      "img": "/img/edge-70.webp",
+      "sku": "AV-E70",
+      "slug": "edge-70",
+      "precio_desde": "Desde $85,000 USD",
+      "bullets": [
+        "Tanque 37.5 L, flujo 24 L/min",
+        "Percepción avanzada a baja altura",
+        "Esparcido 70 L, descarga alta",
+        "Ideal para un solo piloto",
+        "Carga rápida hasta en 9 min"
+      ],
+      "especificaciones": {
+        "tanque_spray": "37.5 L",
+        "flujo_max": "24 L/min",
+        "tamano_gota": "10–300 μm",
+        "esparcido": "Tolva 70 L (descarga alta hasta 240 kg/min)",
+        "percepcion": "Visión compuesta; obstáculos de 1 cm",
+        "velocidad_max": "13.8 m/s",
+        "altura_seguimiento": "Hasta 30 m",
+        "carga_rapida": "9 min (5C)",
+        "proteccion": "IP67",
+        "operacion": "Un solo piloto (multi-parcela)"
+      },
+      "usos_recomendados": [
+        "Huertos pequeños y medianos",
+        "Horticultura",
+        "Parcelas fragmentadas",
+        "Zonas con pendiente pronunciada",
+        "Operación individual"
+      ]
+    }
+  ],
+  "tecnologias": [
+    {
+      "titulo": "Atomización de precisión CCMS",
+      "descripcion": "Sistema CCMS permite ajustar el tamaño de gota de 10–300 μm por boquilla para cobertura uniforme.",
+      "icono": "🎯"
+    },
+    {
+      "titulo": "Percepción 360° radar + lidar",
+      "descripcion": "Detección de obstáculos, seguimiento de terreno y operación nocturna segura.",
+      "icono": "📡"
+    },
+    {
+      "titulo": "Esparcido granular de alta capacidad",
+      "descripcion": "Tolvas de 70–100 L para fertilizantes, cal y semillas con control fino de dosis.",
+      "icono": "🌾"
+    },
+    {
+      "titulo": "FPV 2K con iluminación IR",
+      "descripcion": "Operación nocturna con video 2K y luces IR para máxima visibilidad.",
+      "icono": "🌙"
+    },
+    {
+      "titulo": "RTK centimétrico",
+      "descripcion": "Georreferenciación de precisión para agricultura de precisión.",
+      "icono": "📍"
+    },
+    {
+      "titulo": "Protección IP67/IPX6K",
+      "descripcion": "Resistencia a clima extremo y operación en condiciones adversas.",
+      "icono": "🛡️"
+    }
+  ]
+}
