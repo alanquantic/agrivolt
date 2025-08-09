@@ -13,11 +13,13 @@ Sitio web estático para la venta de drones agrícolas AgriVolt, desarrollado co
 
 ## 🛠 Stack Tecnológico
 
-- **Framework**: Next.js 14 (App Router) con exportación estática
-- **Estilos**: Tailwind CSS con variables personalizadas
-- **Tipografías**: Space Grotesk (títulos) + Inter (cuerpo) via `next/font`
-- **Datos**: JSON local editable (`data/modelos.json`)
-- **SEO**: JSON-LD Product + FAQPage + Organization schemas
+- **Framework**: Next.js 15.4.6 (App Router) con exportación estática
+- **React**: v19.1.0 con TypeScript 5
+- **Estilos**: Tailwind CSS v3.4 estable + PostCSS + Autoprefixer
+- **Tipografías**: Space Grotesk (títulos) + Inter (cuerpo) via `next/font/google`
+- **Datos**: JSON local editable (`data/modelos.json`) con tipos TypeScript
+- **SEO**: JSON-LD Product + FAQPage + Organization schemas completos
+- **Build**: Completamente estático, 10 páginas pre-renderizadas
 
 ## 📁 Estructura del Proyecto
 
@@ -174,36 +176,122 @@ lg:px-12 lg:py-12
 - ✅ Microcopys de privacidad y validación incluidos
 - ✅ Sitio 100% estático y optimizado para costo mínimo
 
+## 🛠 Resolución de Problemas
+
+### Build Issues Comunes
+```bash
+# Si Tailwind no compila:
+rm -rf .next node_modules && npm install && npm run build
+
+# Si hay conflictos de versión:
+npm list tailwindcss postcss autoprefixer
+
+# Cache limpio en desarrollo:
+rm -rf .next && npm run dev
+```
+
+### Configuración CSS
+- **PostCSS**: Usa `tailwindcss` + `autoprefixer` (no `@tailwindcss/postcss`)
+- **Tailwind**: v3.4 estable, NO v4 alpha
+- **Variables CSS**: Definidas en `globals.css` con utilidades custom
+
+## 🖼 Especificaciones de Assets
+
+### Video Hero (`/public/media/hero.mp4`)
+- **Resolución**: 1920×1080 (Full HD mínimo)
+- **Duración**: 10-30 segundos (loop automático)
+- **Formato**: MP4 con H.264 codec
+- **Tamaño recomendado**: < 5MB para carga rápida
+- **Contenido sugerido**: Drone en acción, campo agrícola, movimiento suave
+
+### Imágenes de Productos (`/public/img/`)
+
+#### Titan 150 (`titan-150.webp`)
+- **Resolución**: 800×600px (4:3 aspect ratio)
+- **Formato**: WebP con calidad 85-90%
+- **Tamaño objetivo**: < 200KB
+- **Composición**: Drone completo, vista lateral/3/4, fondo neutro
+
+#### Pro 100 (`pro-100.webp`)
+- **Resolución**: 800×600px (4:3 aspect ratio)  
+- **Formato**: WebP con calidad 85-90%
+- **Tamaño objetivo**: < 200KB
+- **Composición**: Drone completo, vista lateral/3/4, fondo neutro
+
+#### Edge 70 (`edge-70.webp`)
+- **Resolución**: 800×600px (4:3 aspect ratio)
+- **Formato**: WebP con calidad 85-90%
+- **Tamaño objetivo**: < 200KB  
+- **Composición**: Drone completo, vista lateral/3/4, fondo neutro
+
+#### Open Graph (`og-agrivolt.jpg`)
+- **Resolución**: 1200×630px (1.91:1 ratio exacto para OG)
+- **Formato**: JPG con calidad 85%
+- **Tamaño objetivo**: < 300KB
+- **Contenido**: Logo AgriVolt + drone + texto "Drones Agrícolas"
+
+### Herramientas Recomendadas
+```bash
+# Conversión a WebP
+npx @squoosh/cli --webp '{"quality":85}' *.jpg
+
+# Optimización
+npx imagemin *.webp --out-dir=optimized --plugin=webp
+
+# Verificar dimensiones
+file *.webp
+```
+
 ## 🔧 Personalización
 
-### Contenido
+### Contenido Editable
 ```json
-// data/modelos.json - Editar sin tocar componentes
+// data/modelos.json - Modificar productos sin tocar código
 {
   "modelos": [
     {
-      "nombre": "...",
+      "nombre": "AgriVolt Titan 150",
       "especificaciones": {
-        "tanque_spray": "70 L",
-        "flujo_max": "40 L/min"
-        // ... más specs
-      }
+        "tanque_spray": "70 L (73 L máx.)",
+        "flujo_max": "40 L/min ±5%",
+        "tamano_gota": "10–300 μm",
+        "velocidad_max": "13.8 m/s"
+      },
+      "bullets": [
+        "Tanque 70 L, flujo 40 L/min",
+        "Radar 360°, FPV 2K + térmico", 
+        "Resistencia IP67/IPX6K",
+        "Esparcido rápido 240 kg/min"
+      ]
+    }
+  ],
+  "tecnologias": [
+    {
+      "title": "Anti‑jamming GNSS y datos",
+      "description": "Operación en áreas con interferencia activa."
     }
   ]
 }
 ```
 
-### Formulario Endpoint
+### Variables de Entorno
 ```bash
 # .env.local (opcional)
 NEXT_PUBLIC_FORMS_ENDPOINT=https://api.ejemplo.com/cotizaciones
+
+# Para producción en Vercel:
+# Dashboard → Settings → Environment Variables
 ```
 
-### Imágenes
-- Reemplazar en `/public/img/` con formato WebP
-- Mantener nombres: `titan-150.webp`, `pro-100.webp`, `edge-70.webp`
-- Agregar video hero en `/public/media/hero.mp4`
+### Personalización de Colores
+```css
+/* src/app/globals.css */
+:root {
+  --primary: #2d39f1;     /* Color principal - cambiar aquí */
+  --bg-dark: #0b0b0f;     /* Fondo sección tecnología */
+}
+```
 
 ---
 
-**Proyecto listo para producción** - Deploy directo a Vercel con costo prácticamente nulo y performance optimizada para conversión 🚁✨
+**🎯 Proyecto COMPLETO y funcionando** - Deploy directo a Vercel con costo prácticamente nulo, performance optimizada y documentación técnica completa 🚁✨
