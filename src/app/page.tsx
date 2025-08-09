@@ -149,8 +149,8 @@ export default function Home() {
               {modelosData.tecnologias.map((tech, index) => (
                 <FeatureCard
                   key={index}
-                  title={tech.titulo}
-                  description={tech.descripcion}
+                  title={tech.title}
+                  description={tech.description}
                 />
               ))}
             </div>
