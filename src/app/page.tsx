@@ -138,15 +138,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* TECNOLOGÍA */}
-        <section id="tecnologia" className="py-20 text-white bg-dark">
+        {/* TECNOLOGÍA (fondo negro como en el HTML) */}
+        <section id="tecnologia" className="py-20 text-white" style={{background: 'var(--bg-dark)'}}>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <h3 className="text-3xl md:text-5xl font-bold tracking-tight font-display">
-              Tecnología de atomización <span className="text-primary">de precisión</span>
+              Tecnología para <span style={{color: 'var(--primary)'}}>entornos exigentes</span>
             </h3>
-            <p className="mt-4 text-xl text-white/80 max-w-3xl">
-              El sistema CCMS permite ajustar el tamaño de gota de 10–300 μm por boquilla. Con MCRFF, la corriente de aire penetra el dosel incluso a baja altura y mayor velocidad.
-            </p>
             
             <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {modelosData.tecnologias.map((tech, index) => (

@@ -120,6 +120,32 @@
   ],
   "tecnologias": [
     {
+      "title": "Anti‑jamming GNSS y datos",
+      "description": "Operación en áreas con interferencia activa."
+    },
+    {
+      "title": "RTK centimétrico", 
+      "description": "Georreferenciación de precisión."
+    },
+    {
+      "title": "Seguimiento de terreno",
+      "description": "Altura constante con radar altímetro."
+    },
+    {
+      "title": "Climas extremos",
+      "description": "-10 a 50 °C."
+    },
+    {
+      "title": "Bitácora y trazas",
+      "description": "Rutas, dosis y reportes."
+    },
+    {
+      "title": "Despliegue en 5 min",
+      "description": "Menos tiempo armando."
+    }
+  ],
+  "tecnologias_originales": [
+    {
       "titulo": "Atomización de precisión CCMS",
       "descripcion": "Sistema CCMS permite ajustar el tamaño de gota de 10–300 μm por boquilla para cobertura uniforme.",
       "icono": "🎯"
