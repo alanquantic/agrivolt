@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/:path*\\.(?:webp|jpg|jpeg|png|mp4|webm)",
+      "source": "/(.*\\.(webp|jpg|jpeg|gif|png|mp4|webm))$",
       "headers": [
         {
           "key": "Cache-Control",
