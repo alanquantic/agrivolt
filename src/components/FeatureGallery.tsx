@@ -12,6 +12,7 @@ interface GalleryItem {
   icon?: string
   bgColor?: string
   textColor?: string
+  height?: string
   hoverInfo?: string
 }
 
@@ -22,6 +23,7 @@ const galleryData: GalleryItem[] = [
     type: 'image',
     title: 'Mantenimiento simplificado',
     image: '/img/titan-150.webp',
+    height: 'row-span-2',
     hoverInfo: 'Acceso directo a componentes críticos. Herramientas estándar. Reparación en campo en menos de 30 minutos.'
   },
   {
@@ -30,6 +32,7 @@ const galleryData: GalleryItem[] = [
     title: 'Despliegue rápido',
     subtitle: '5 min',
     image: '/img/pro-100.webp',
+    height: 'row-span-2',
     hoverInfo: 'Armado completo en 5 minutos. Sin herramientas especiales. Listo para operar inmediatamente.'
   },
   {
@@ -37,6 +40,7 @@ const galleryData: GalleryItem[] = [
     type: 'image',
     title: 'Motor de arranque automático',
     image: '/img/edge-70.webp',
+    height: 'row-span-1',
     hoverInfo: 'Sistema de arranque electrónico. Encendido con un botón. Sin esfuerzo manual requerido.'
   },
   
@@ -49,6 +53,7 @@ const galleryData: GalleryItem[] = [
     description: 'Peso y tamaño más pequeños de cualquier vehículo de su clase',
     bgColor: 'bg-gray-50',
     textColor: 'text-black',
+    height: 'row-span-1',
     hoverInfo: 'MTOW (Maximum Take-Off Weight) optimizado para transporte y operación en espacios reducidos.'
   },
   {
@@ -56,8 +61,9 @@ const galleryData: GalleryItem[] = [
     type: 'data',
     title: 'Sistema híbrido propietario',
     icon: '⚡',
-    bgColor: 'bg-red-500',
-    textColor: 'text-white',
+    bgColor: 'bg-yellow-300',
+    textColor: 'text-black',
+    height: 'row-span-2',
     hoverInfo: 'Tecnología híbrida gas-eléctrica exclusiva. Mayor autonomía y eficiencia energética.'
   },
   {
@@ -68,6 +74,7 @@ const galleryData: GalleryItem[] = [
     description: 'El AgriVolt puede operar en temperaturas tan bajas como',
     bgColor: 'bg-black',
     textColor: 'text-white',
+    height: 'row-span-1',
     hoverInfo: 'Certificación para operación en climas extremos. Componentes resistentes a congelación.'
   }
 ]
@@ -87,13 +94,13 @@ export default function FeatureGallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-6xl mx-auto auto-rows-fr">
           {galleryData.map((item) => (
             <div
               key={item.id}
-              className={`group relative overflow-hidden rounded-md transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+              className={`group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg ${
                 item.bgColor || 'bg-white'
-              } ${item.textColor || 'text-black'} border border-black/5`}
+              } ${item.textColor || 'text-black'} ${item.height || ''}`}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
@@ -108,7 +115,7 @@ export default function FeatureGallery() {
               <div className="relative z-0">
                 {item.type === 'image' ? (
                   // Card con imagen
-                  <div className="relative h-40">
+                  <div className="relative h-full min-h-[200px]">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -130,7 +137,7 @@ export default function FeatureGallery() {
                   </div>
                 ) : (
                   // Card con datos
-                  <div className="p-3 h-40 flex flex-col justify-center">
+                  <div className="p-4 h-full flex flex-col justify-center min-h-[200px]">
                                          {item.icon && (
                        <div className="text-2xl mb-2 text-center">
                          {item.icon}
