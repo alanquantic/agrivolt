@@ -12,6 +12,9 @@ interface GalleryItem {
   icon?: string
   bgColor?: string
   textColor?: string
+  // Posicionamiento Masonry controlado
+  colStart?: 1 | 2 | 3
+  rowStart?: 1 | 2 | 3
   rowSpan?: 1 | 2
   hoverInfo?: string
 }
@@ -23,7 +26,9 @@ const galleryData: GalleryItem[] = [
     type: 'image',
     title: 'Mantenimiento simplificado',
     image: '/img/titan-150.webp',
-    rowSpan: 1,
+    colStart: 1,
+    rowStart: 1,
+    rowSpan: 2,
     hoverInfo: 'Acceso directo a componentes críticos. Herramientas estándar. Reparación en campo en menos de 30 minutos.'
   },
   {
@@ -32,6 +37,8 @@ const galleryData: GalleryItem[] = [
     title: 'Despliegue rápido',
     subtitle: '5 min',
     image: '/img/pro-100.webp',
+    colStart: 2,
+    rowStart: 3,
     rowSpan: 1,
     hoverInfo: 'Armado completo en 5 minutos. Sin herramientas especiales. Listo para operar inmediatamente.'
   },
@@ -40,6 +47,8 @@ const galleryData: GalleryItem[] = [
     type: 'image',
     title: 'Motor de arranque automático',
     image: '/img/edge-70.webp',
+    colStart: 3,
+    rowStart: 1,
     rowSpan: 1,
     hoverInfo: 'Sistema de arranque electrónico. Encendido con un botón. Sin esfuerzo manual requerido.'
   },
@@ -53,6 +62,8 @@ const galleryData: GalleryItem[] = [
     description: 'Peso y tamaño más pequeños de cualquier vehículo de su clase',
     bgColor: 'bg-gray-50',
     textColor: 'text-black',
+    colStart: 1,
+    rowStart: 3,
     rowSpan: 1,
     hoverInfo: 'MTOW (Maximum Take-Off Weight) optimizado para transporte y operación en espacios reducidos.'
   },
@@ -63,6 +74,8 @@ const galleryData: GalleryItem[] = [
     icon: '⚡',
     bgColor: 'bg-yellow-300',
     textColor: 'text-black',
+    colStart: 2,
+    rowStart: 1,
     rowSpan: 2,
     hoverInfo: 'Tecnología híbrida gas-eléctrica exclusiva. Mayor autonomía y eficiencia energética.'
   },
@@ -74,6 +87,8 @@ const galleryData: GalleryItem[] = [
     description: 'El AgriVolt puede operar en temperaturas tan bajas como',
     bgColor: 'bg-black',
     textColor: 'text-white',
+    colStart: 3,
+    rowStart: 2,
     rowSpan: 2,
     hoverInfo: 'Certificación para operación en climas extremos. Componentes resistentes a congelación.'
   }
@@ -94,13 +109,17 @@ export default function FeatureGallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto md:auto-rows-[220px] grid-flow-dense">
-          {galleryData.map((item) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 md:auto-rows-[220px] gap-4 max-w-6xl mx-auto">
+          {galleryData.map((item) => {
+            const colStart = item.colStart === 2 ? 'md:col-start-2' : item.colStart === 3 ? 'md:col-start-3' : 'md:col-start-1'
+            const rowStart = item.rowStart === 2 ? 'md:row-start-2' : item.rowStart === 3 ? 'md:row-start-3' : 'md:row-start-1'
+            const rowSpan = item.rowSpan === 2 ? 'md:row-span-2' : 'md:row-span-1'
+            return (
             <div
               key={item.id}
               className={`group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg ${
                 item.bgColor || 'bg-white'
-              } ${item.textColor || 'text-black'} ${item.rowSpan === 2 ? 'md:row-span-2' : 'md:row-span-1'}`}
+              } ${item.textColor || 'text-black'} ${colStart} ${rowStart} ${rowSpan}`}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
@@ -179,7 +198,7 @@ export default function FeatureGallery() {
                 </div>
               </div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
     </section>
