@@ -97,12 +97,12 @@ export default function FeatureGallery() {
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-                             {/* Signo + en la esquina */}
-               <div className="absolute top-3 right-3 z-10">
-                 <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md">
-                   <span className="text-black font-bold text-sm">+</span>
-                 </div>
-               </div>
+              {/* Signo + en la esquina */}
+              <div className="absolute top-3 right-3 z-10">
+                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-black font-bold text-sm">+</span>
+                </div>
+              </div>
 
               {/* Contenido principal */}
               <div className="relative z-0">
@@ -118,40 +118,40 @@ export default function FeatureGallery() {
                     
                     {/* Texto sobre imagen */}
                     <div className="absolute bottom-4 left-4 right-4">
-                                           {item.subtitle && (
-                       <div className="text-2xl font-bold text-white mb-1">
-                         {item.subtitle}
-                       </div>
-                     )}
-                     <h3 className="text-sm font-semibold text-white">
-                       {item.title}
-                     </h3>
+                      {item.subtitle && (
+                        <div className="text-2xl font-bold text-white mb-1">
+                          {item.subtitle}
+                        </div>
+                      )}
+                      <h3 className="text-sm font-semibold text-white">
+                        {item.title}
+                      </h3>
                     </div>
                   </div>
                 ) : (
                   // Card con datos
                   <div className="p-4 h-48 flex flex-col justify-center">
-                                         {item.icon && (
-                       <div className="text-3xl mb-3 text-center">
-                         {item.icon}
-                       </div>
-                     )}
+                    {item.icon && (
+                      <div className="text-3xl mb-3 text-center">
+                        {item.icon}
+                      </div>
+                    )}
                     
-                                         <h3 className="text-sm font-semibold mb-2">
-                       {item.title}
-                     </h3>
-                     
-                     {item.subtitle && (
-                       <div className="text-xl font-bold mb-2">
-                         {item.subtitle}
-                       </div>
-                     )}
-                     
-                     {item.description && (
-                       <p className="text-xs opacity-80">
-                         {item.description}
-                       </p>
-                     )}
+                    <h3 className="text-sm font-semibold mb-2">
+                      {item.title}
+                    </h3>
+                    
+                    {item.subtitle && (
+                      <div className="text-xl font-bold mb-2">
+                        {item.subtitle}
+                      </div>
+                    )}
+                    
+                    {item.description && (
+                      <p className="text-xs opacity-80">
+                        {item.description}
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
