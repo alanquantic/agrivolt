@@ -143,7 +143,7 @@ export default function FeatureGallery() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                     
                     {/* Texto sobre imagen */}
-                    <div className="absolute bottom-2 left-2 right-2">
+                    <div className="absolute bottom-6 left-3 right-3">
                       {item.subtitle && (
                         <div className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]">
                           {item.subtitle}
