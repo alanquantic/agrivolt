@@ -5,6 +5,7 @@ import FeatureCard from '@/components/FeatureCard'
 import CompareTable from '@/components/CompareTable'
 import Footer from '@/components/Footer'
 import FloatingActions from '@/components/FloatingActions'
+import FeatureGallery from '@/components/FeatureGallery'
 import modelosData from '../../data/modelos.json'
 
 export default function Home() {
@@ -156,6 +157,9 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* GALERÍA DE CARACTERÍSTICAS */}
+        <FeatureGallery />
 
         {/* SOLUCIONES POR CULTIVO */}
         <section id="soluciones" className="py-20">
