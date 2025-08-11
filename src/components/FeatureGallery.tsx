@@ -56,8 +56,8 @@ const galleryData: GalleryItem[] = [
     type: 'data',
     title: 'Sistema híbrido propietario',
     icon: '⚡',
-    bgColor: 'bg-yellow-300',
-    textColor: 'text-black',
+    bgColor: 'bg-red-500',
+    textColor: 'text-white',
     hoverInfo: 'Tecnología híbrida gas-eléctrica exclusiva. Mayor autonomía y eficiencia energética.'
   },
   {
@@ -123,9 +123,9 @@ export default function FeatureGallery() {
                           {item.subtitle}
                         </div>
                       )}
-                                           <h3 className="text-xs font-semibold text-white">
-                       {item.title}
-                     </h3>
+                      <h3 className="text-xs font-semibold text-white">
+                        {item.title}
+                      </h3>
                     </div>
                   </div>
                 ) : (
@@ -137,11 +137,11 @@ export default function FeatureGallery() {
                       </div>
                     )}
                     
-                                         <h3 className="text-xs font-semibold mb-2">
+                     <h3 className="text-xs font-semibold mb-2">
                        {item.title}
                      </h3>
                     
-                                         {item.subtitle && (
+                     {item.subtitle && (
                        <div className="text-lg font-bold mb-2">
                          {item.subtitle}
                        </div>
