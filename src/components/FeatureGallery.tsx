@@ -87,11 +87,11 @@ export default function FeatureGallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-w-5xl mx-auto">
           {galleryData.map((item) => (
             <div
               key={item.id}
-              className={`group relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+              className={`group relative overflow-hidden rounded-md transition-all duration-300 hover:scale-105 hover:shadow-lg ${
                 item.bgColor || 'bg-white'
               } ${item.textColor || 'text-black'} border border-black/5`}
               onMouseEnter={() => setHoveredId(item.id)}
@@ -108,7 +108,7 @@ export default function FeatureGallery() {
               <div className="relative z-0">
                 {item.type === 'image' ? (
                   // Card con imagen
-                  <div className="relative h-44">
+                  <div className="relative h-40">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -117,9 +117,9 @@ export default function FeatureGallery() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     
                     {/* Texto sobre imagen */}
-                    <div className="absolute bottom-3 left-3 right-3">
+                    <div className="absolute bottom-2 left-2 right-2">
                       {item.subtitle && (
-                        <div className="text-2xl font-bold text-white mb-1">
+                        <div className="text-xl font-bold text-white mb-1">
                           {item.subtitle}
                         </div>
                       )}
@@ -130,19 +130,19 @@ export default function FeatureGallery() {
                   </div>
                 ) : (
                   // Card con datos
-                  <div className="p-4 h-44 flex flex-col justify-center">
-                    {item.icon && (
-                      <div className="text-3xl mb-3 text-center">
-                        {item.icon}
-                      </div>
-                    )}
+                  <div className="p-3 h-40 flex flex-col justify-center">
+                                         {item.icon && (
+                       <div className="text-2xl mb-2 text-center">
+                         {item.icon}
+                       </div>
+                     )}
                     
                      <h3 className="text-xs font-semibold mb-2">
                        {item.title}
                      </h3>
                     
                      {item.subtitle && (
-                       <div className="text-lg font-bold mb-2">
+                       <div className="text-base font-bold mb-2">
                          {item.subtitle}
                        </div>
                      )}
