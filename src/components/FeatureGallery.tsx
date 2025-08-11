@@ -36,7 +36,7 @@ const galleryData: GalleryItem[] = [
     type: 'image', 
     title: 'Despliegue rápido',
     subtitle: '5 min',
-    image: '/img/pro-100.webp',
+    image: '/img/gallery-deployment.webp',
     colStart: 2,
     rowStart: 3,
     rowSpan: 1,
@@ -46,7 +46,7 @@ const galleryData: GalleryItem[] = [
     id: 'engine',
     type: 'image',
     title: 'Motor de arranque automático',
-    image: '/img/edge-70.webp',
+    image: '/img/gallery-engine.webp',
     colStart: 3,
     rowStart: 1,
     rowSpan: 1,
@@ -140,16 +140,16 @@ export default function FeatureGallery() {
                       alt={item.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                     
                     {/* Texto sobre imagen */}
                     <div className="absolute bottom-2 left-2 right-2">
                       {item.subtitle && (
-                        <div className="text-xl font-bold text-white mb-1">
+                        <div className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]">
                           {item.subtitle}
                         </div>
                       )}
-                      <h3 className="text-sm font-semibold text-white">
+                      <h3 className="text-base md:text-lg font-semibold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]">
                         {item.title}
                       </h3>
                     </div>
