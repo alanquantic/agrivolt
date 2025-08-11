@@ -195,6 +195,29 @@ export default function Home() {
                 <h3 className="text-xl font-semibold mb-3">Frutales</h3>
                 <p className="text-slate-600">Penetración en copas densas y laderas para cítricos, mango y nuez.</p>
               </div>
+
+              {/* Nueva fila: Agave, Viñedos y Caña de azúcar */}
+              <div className="bg-white p-8 rounded-2xl border border-black/5 shadow-sm">
+                <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
+                  <span className="text-2xl">🌵</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Agave</h3>
+                <p className="text-slate-600">Cobertura dirigida a la base de la planta y control de maleza entre hileras con baja deriva.</p>
+              </div>
+              <div className="bg-white p-8 rounded-2xl border border-black/5 shadow-sm">
+                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                  <span className="text-2xl">🍇</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Viñedos</h3>
+                <p className="text-slate-600">Aplicación lateral y en copas con gota media para cobertura uniforme en racimos.</p>
+              </div>
+              <div className="bg-white p-8 rounded-2xl border border-black/5 shadow-sm">
+                <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                  <span className="text-2xl">🌱</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Caña de azúcar</h3>
+                <p className="text-slate-600">Cobertura sobre surcos y control de plagas en etapas de crecimiento acelerado.</p>
+              </div>
             </div>
           </div>
         </section>
