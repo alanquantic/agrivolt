@@ -25,11 +25,11 @@ const galleryData: GalleryItem[] = [
     id: 'maintenance',
     type: 'image',
     title: 'Mantenimiento simplificado',
-    image: '/img/titan-150.webp',
+    image: '/img/gallery-maintenance.webp',
     colStart: 1,
     rowStart: 1,
     rowSpan: 2,
-    hoverInfo: 'Acceso directo a componentes críticos. Herramientas estándar. Reparación en campo en menos de 30 minutos.'
+    hoverInfo: 'Diseño modular con componentes accesibles que facilitan inspecciones rápidas y reducen el tiempo de inactividad.'
   },
   {
     id: 'deployment',
@@ -58,8 +58,8 @@ const galleryData: GalleryItem[] = [
     id: 'weight',
     type: 'data',
     title: 'Factor de forma compacto',
-    subtitle: '57 lb / 26kg MTOW',
-    description: 'Peso y tamaño más pequeños de cualquier vehículo de su clase',
+    subtitle: '57 lb / 26 kg MTOW',
+    description: 'Tamaño y peso optimizados para un transporte sencillo y operación en espacios reducidos sin perder capacidad de carga.',
     bgColor: 'bg-gray-50',
     textColor: 'text-black',
     colStart: 1,
@@ -77,14 +77,14 @@ const galleryData: GalleryItem[] = [
     colStart: 2,
     rowStart: 1,
     rowSpan: 2,
-    hoverInfo: 'Tecnología híbrida gas-eléctrica exclusiva. Mayor autonomía y eficiencia energética.'
+    hoverInfo: 'Integración de control inteligente y sensores de precisión para optimizar la aplicación y adaptarse a diferentes cultivos y condiciones.'
   },
   {
     id: 'temperature',
     type: 'data',
     title: 'Operación en temperaturas frías',
     subtitle: '15°F / -10°C',
-    description: 'El AgriVolt puede operar en temperaturas tan bajas como',
+    description: 'Diseñado para funcionar con alto rendimiento en ambientes de bajas temperaturas y climas exigentes.',
     bgColor: 'bg-black',
     textColor: 'text-white',
     colStart: 3,
