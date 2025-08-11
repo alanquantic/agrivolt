@@ -47,7 +47,7 @@ const galleryData: GalleryItem[] = [
     title: 'Factor de forma compacto',
     subtitle: '57 lb / 26kg MTOW',
     description: 'Peso y tamaño más pequeños de cualquier vehículo de su clase',
-    bgColor: 'bg-gray-100',
+    bgColor: 'bg-gray-50',
     textColor: 'text-black',
     hoverInfo: 'MTOW (Maximum Take-Off Weight) optimizado para transporte y operación en espacios reducidos.'
   },
@@ -56,7 +56,7 @@ const galleryData: GalleryItem[] = [
     type: 'data',
     title: 'Sistema híbrido propietario',
     icon: '⚡',
-    bgColor: 'bg-yellow-400',
+    bgColor: 'bg-yellow-300',
     textColor: 'text-black',
     hoverInfo: 'Tecnología híbrida gas-eléctrica exclusiva. Mayor autonomía y eficiencia energética.'
   },
@@ -87,28 +87,28 @@ export default function FeatureGallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {galleryData.map((item) => (
             <div
               key={item.id}
-              className={`group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+              className={`group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
                 item.bgColor || 'bg-white'
               } ${item.textColor || 'text-black'} border border-black/5`}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Signo + en la esquina */}
-              <div className="absolute top-4 right-4 z-10">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-black font-bold text-lg">+</span>
-                </div>
-              </div>
+                             {/* Signo + en la esquina */}
+               <div className="absolute top-3 right-3 z-10">
+                 <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md">
+                   <span className="text-black font-bold text-sm">+</span>
+                 </div>
+               </div>
 
               {/* Contenido principal */}
               <div className="relative z-0">
                 {item.type === 'image' ? (
                   // Card con imagen
-                  <div className="relative h-64">
+                  <div className="relative h-48">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -118,40 +118,40 @@ export default function FeatureGallery() {
                     
                     {/* Texto sobre imagen */}
                     <div className="absolute bottom-4 left-4 right-4">
-                      {item.subtitle && (
-                        <div className="text-3xl font-bold text-white mb-1">
-                          {item.subtitle}
-                        </div>
-                      )}
-                      <h3 className="text-lg font-semibold text-white">
-                        {item.title}
-                      </h3>
+                                           {item.subtitle && (
+                       <div className="text-2xl font-bold text-white mb-1">
+                         {item.subtitle}
+                       </div>
+                     )}
+                     <h3 className="text-sm font-semibold text-white">
+                       {item.title}
+                     </h3>
                     </div>
                   </div>
                 ) : (
                   // Card con datos
-                  <div className="p-6 h-64 flex flex-col justify-center">
-                    {item.icon && (
-                      <div className="text-4xl mb-4 text-center">
-                        {item.icon}
-                      </div>
-                    )}
+                  <div className="p-4 h-48 flex flex-col justify-center">
+                                         {item.icon && (
+                       <div className="text-3xl mb-3 text-center">
+                         {item.icon}
+                       </div>
+                     )}
                     
-                    <h3 className="text-lg font-semibold mb-2">
-                      {item.title}
-                    </h3>
-                    
-                    {item.subtitle && (
-                      <div className="text-2xl font-bold mb-2">
-                        {item.subtitle}
-                      </div>
-                    )}
-                    
-                    {item.description && (
-                      <p className="text-sm opacity-80">
-                        {item.description}
-                      </p>
-                    )}
+                                         <h3 className="text-sm font-semibold mb-2">
+                       {item.title}
+                     </h3>
+                     
+                     {item.subtitle && (
+                       <div className="text-xl font-bold mb-2">
+                         {item.subtitle}
+                       </div>
+                     )}
+                     
+                     {item.description && (
+                       <p className="text-xs opacity-80">
+                         {item.description}
+                       </p>
+                     )}
                   </div>
                 )}
               </div>
