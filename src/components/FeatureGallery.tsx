@@ -23,7 +23,6 @@ const galleryData: GalleryItem[] = [
     type: 'image',
     title: 'Mantenimiento simplificado',
     image: '/img/titan-150.webp',
-    height: 'row-span-2',
     hoverInfo: 'Acceso directo a componentes críticos. Herramientas estándar. Reparación en campo en menos de 30 minutos.'
   },
   {
@@ -32,7 +31,6 @@ const galleryData: GalleryItem[] = [
     title: 'Despliegue rápido',
     subtitle: '5 min',
     image: '/img/pro-100.webp',
-    height: 'row-span-2',
     hoverInfo: 'Armado completo en 5 minutos. Sin herramientas especiales. Listo para operar inmediatamente.'
   },
   {
@@ -40,7 +38,6 @@ const galleryData: GalleryItem[] = [
     type: 'image',
     title: 'Motor de arranque automático',
     image: '/img/edge-70.webp',
-    height: 'row-span-1',
     hoverInfo: 'Sistema de arranque electrónico. Encendido con un botón. Sin esfuerzo manual requerido.'
   },
   
@@ -53,7 +50,6 @@ const galleryData: GalleryItem[] = [
     description: 'Peso y tamaño más pequeños de cualquier vehículo de su clase',
     bgColor: 'bg-gray-50',
     textColor: 'text-black',
-    height: 'row-span-1',
     hoverInfo: 'MTOW (Maximum Take-Off Weight) optimizado para transporte y operación en espacios reducidos.'
   },
   {
@@ -63,7 +59,6 @@ const galleryData: GalleryItem[] = [
     icon: '⚡',
     bgColor: 'bg-yellow-300',
     textColor: 'text-black',
-    height: 'row-span-2',
     hoverInfo: 'Tecnología híbrida gas-eléctrica exclusiva. Mayor autonomía y eficiencia energética.'
   },
   {
@@ -74,7 +69,6 @@ const galleryData: GalleryItem[] = [
     description: 'El AgriVolt puede operar en temperaturas tan bajas como',
     bgColor: 'bg-black',
     textColor: 'text-white',
-    height: 'row-span-1',
     hoverInfo: 'Certificación para operación en climas extremos. Componentes resistentes a congelación.'
   }
 ]
@@ -94,13 +88,13 @@ export default function FeatureGallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-6xl mx-auto auto-rows-fr">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
           {galleryData.map((item) => (
             <div
               key={item.id}
-              className={`group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+              className={`group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg ${
                 item.bgColor || 'bg-white'
-              } ${item.textColor || 'text-black'} ${item.height || ''}`}
+              } ${item.textColor || 'text-black'}`}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
@@ -115,7 +109,7 @@ export default function FeatureGallery() {
               <div className="relative z-0">
                 {item.type === 'image' ? (
                   // Card con imagen
-                  <div className="relative h-full min-h-[200px]">
+                  <div className="relative h-48">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -130,32 +124,32 @@ export default function FeatureGallery() {
                           {item.subtitle}
                         </div>
                       )}
-                      <h3 className="text-xs font-semibold text-white">
+                      <h3 className="text-sm font-semibold text-white">
                         {item.title}
                       </h3>
                     </div>
                   </div>
                 ) : (
                   // Card con datos
-                  <div className="p-4 h-full flex flex-col justify-center min-h-[200px]">
+                  <div className="p-6 h-48 flex flex-col justify-center">
                                          {item.icon && (
                        <div className="text-2xl mb-2 text-center">
                          {item.icon}
                        </div>
                      )}
                     
-                     <h3 className="text-xs font-semibold mb-2">
+                     <h3 className="text-sm font-semibold mb-2">
                        {item.title}
                      </h3>
                     
                      {item.subtitle && (
-                       <div className="text-base font-bold mb-2">
+                       <div className="text-lg font-bold mb-2">
                          {item.subtitle}
                        </div>
                      )}
                     
                     {item.description && (
-                      <p className="text-xs opacity-80">
+                      <p className="text-sm opacity-80">
                         {item.description}
                       </p>
                     )}
