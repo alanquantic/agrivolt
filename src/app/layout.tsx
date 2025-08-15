@@ -48,10 +48,10 @@ export const metadata: Metadata = {
     description: 'Drones agrícolas para pulverización, esparcido y izaje. Cobertura uniforme, ahorro de pesticidas y operación segura. Distribución para Latinoamérica desde México.',
     images: [
       {
-        url: '/img/og-agrivolt.jpg',
+        url: '/img/AgriVolt_logo_oficial.png',
         width: 1200,
         height: 630,
-        alt: 'AgriVolt - Drones Agrícolas',
+        alt: 'AgriVolt - Logo Oficial',
       }
     ],
   },
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AgriVolt — Drones agrícolas: precisión, potencia y ahorro de insumos',
     description: 'Drones agrícolas para pulverización, esparcido y izaje. Cobertura uniforme, ahorro de pesticidas y operación segura.',
-    images: ['/img/og-agrivolt.jpg'],
+    images: ['/img/AgriVolt_logo_oficial.png'],
   },
   robots: {
     index: true,
@@ -96,7 +96,7 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "AgriVolt",
               "url": "https://agrivolt.mx",
-              "logo": "https://agrivolt.mx/img/logo-agrivolt.png",
+              "logo": "https://agrivolt.mx/img/AgriVolt_logo_oficial.png",
               "description": "Drones agrícolas para pulverización, esparcido y izaje con tecnología de precisión",
               "address": {
                 "@type": "PostalAddress",

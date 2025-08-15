@@ -5,11 +5,15 @@ export default function Header() {
     <header className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-black/5">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="h-8 w-8 rounded-full grid place-items-center text-white" style={{background: 'var(--primary)'}}>
-            ▲
-          </div>
-          <Link href="/" className="font-semibold tracking-tight font-display hover:opacity-80 transition-opacity">
-            <span style={{color: 'var(--slate-900, #0f172a)'}}>AgriVolt</span>
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <img 
+              src="/img/AgriVolt_logo_oficial.png" 
+              alt="AgriVolt Logo" 
+              className="h-8 w-auto"
+            />
+            <span className="font-semibold tracking-tight font-display" style={{color: 'var(--slate-900, #0f172a)'}}>
+              AgriVolt
+            </span>
           </Link>
         </div>
         
