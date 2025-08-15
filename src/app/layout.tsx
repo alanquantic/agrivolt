@@ -85,6 +85,9 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
+        {/* Favicon */}
+        <link rel="icon" type="image/png" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" href="/img/AgriVolt_logo_oficial.png" />
         {/* Theme color */}
         <meta name="theme-color" content="#2d39f1" />
         {/* Organization JSON-LD */}
