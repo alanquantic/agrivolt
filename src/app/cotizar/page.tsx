@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -159,6 +159,13 @@ export default function CotizarPage() {
       : formData.modulos.filter(m => m !== modulo)
     handleInputChange('modulos', newModulos)
   }
+
+  // Hacer scroll hacia arriba cuando se muestre el mensaje de éxito
+  useEffect(() => {
+    if (submitStatus === 'success') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [submitStatus])
 
   if (submitStatus === 'success') {
     return (
