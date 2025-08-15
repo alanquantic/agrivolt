@@ -159,7 +159,10 @@ function generateAdminEmailHTML(body: Record<string, unknown>, textContent: stri
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">🚁 AgriVolt</div>
+            <div class="logo">
+                <img src="https://agrivolt.mx/img/AgriVolt_logo_oficial.png" alt="AgriVolt" style="height: 40px; width: auto; margin-bottom: 10px;">
+                <div style="color: white; font-size: 28px; font-weight: bold;">AgriVolt</div>
+            </div>
             <div class="subtitle">Nueva solicitud de cotización</div>
         </div>
         
@@ -270,7 +273,10 @@ function generateCustomerEmailHTML(body: Record<string, unknown>, _textContent: 
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">🚁 AgriVolt</div>
+            <div class="logo">
+                <img src="https://agrivolt.mx/img/AgriVolt_logo_oficial.png" alt="AgriVolt" style="height: 40px; width: auto; margin-bottom: 10px;">
+                <div style="color: white; font-size: 28px; font-weight: bold;">AgriVolt</div>
+            </div>
             <div class="subtitle">Confirmación de solicitud</div>
         </div>
         
