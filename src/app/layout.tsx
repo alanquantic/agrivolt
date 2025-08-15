@@ -86,14 +86,9 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         {/* Favicon */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/img/AgriVolt_logo_oficial.png?v=4" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/img/AgriVolt_logo_oficial.png?v=4" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/AgriVolt_logo_oficial.png?v=4" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/img/AgriVolt_logo_oficial.png?v=4" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/img/AgriVolt_logo_oficial.png?v=4" />
-        <link rel="shortcut icon" href="/favicon.ico?v=4" />
-        <link rel="manifest" href="/manifest.json?v=4" />
+        <link rel="icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         {/* Theme color */}
         <meta name="theme-color" content="#2d39f1" />
         {/* Organization JSON-LD */}
