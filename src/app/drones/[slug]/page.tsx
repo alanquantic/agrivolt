@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import YouTubeVideo from '@/components/YouTubeVideo'
 import modelosData from '../../../../data/modelos.json'
 
 interface Modelo {
@@ -242,6 +243,15 @@ export default async function ProductoPage({ params }: PageProps) {
                 </tbody>
               </table>
             </div>
+          </section>
+
+          {/* Video de YouTube */}
+          <section className="mt-16">
+            <h2 className="text-3xl font-bold font-display mb-8">Video demostrativo</h2>
+            <YouTubeVideo 
+              videoId="_2Ubiz3u3Xk"
+              title={`Video demostrativo - ${modelo.nombre}`}
+            />
           </section>
 
           {/* FAQs del modelo */}

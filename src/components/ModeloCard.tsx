@@ -75,6 +75,19 @@ export default function ModeloCard({
           ))}
         </ul>
         
+        {/* Botón Ver detalles siempre visible */}
+        <div className="mt-6">
+          <Link 
+            href={`/drones/${slug}`}
+            className="inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-colors text-sm w-full"
+          >
+            Ver detalles
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" className="h-4 w-4">
+              <path d="M9 18l6-6-6-6"></path>
+            </svg>
+          </Link>
+        </div>
+        
         <div className={`mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 overflow-hidden transition-all duration-500 ${
           isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
