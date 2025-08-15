@@ -4,12 +4,16 @@ const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY
 const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN || 'mailer.ceosnew.media'
 const TO_EMAIL = process.env.TO_EMAIL || 'alan@ceosnm.com'
 
-if (!MAILGUN_API_KEY) {
-  throw new Error('MAILGUN_API_KEY no está configurada')
-}
-
 export async function POST(request: NextRequest) {
   try {
+    // Verificar que las variables de entorno estén configuradas
+    if (!MAILGUN_API_KEY) {
+      return NextResponse.json(
+        { error: 'Configuración de email no disponible' },
+        { status: 500 }
+      )
+    }
+
     const body = await request.json()
     
     // Validar datos requeridos
