@@ -122,55 +122,18 @@ export default function CotizarPage() {
         timestamp: new Date().toISOString()
       }
 
-      // Verificar si hay endpoint configurado
-      const formsEndpoint = process.env.NEXT_PUBLIC_FORMS_ENDPOINT
+      // Enviar formulario a la API route
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData)
+      })
 
-      if (formsEndpoint) {
-        // POST JSON al endpoint configurado
-        const response = await fetch(formsEndpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(submissionData)
-        })
-
-        if (!response.ok) {
-          throw new Error('Error en el envío')
-        }
-      } else {
-        // Fallback a mailto
-        const subject = encodeURIComponent('Solicitud de cotización AgriVolt')
-        const body = encodeURIComponent(`
-Solicitud de cotización AgriVolt
-
-Datos de contacto:
-- Nombre: ${formData.nombre}
-- Email: ${formData.email}
-- Teléfono: ${formData.telefono}
-- País: ${formData.pais}
-- Estado: ${formData.estado}
-
-Requerimientos:
-- Necesidad principal: ${formData.necesidad}
-- Tipo de cultivo: ${formData.cultivo === 'Otros' ? formData.cultivoOtro : formData.cultivo}
-- Superficie: ${formData.superficie}
-- Preferencia de contacto: ${formData.contacto}
-
-${showExtended ? `
-Detalles adicionales:
-- Terreno: ${formData.terreno}
-- Frecuencia: ${formData.frecuencia}
-- Ventana de compra: ${formData.ventana}
-- Módulos de interés: ${formData.modulos.join(', ')}
-- Presupuesto: ${formData.presupuesto}
-- Mensaje: ${formData.mensaje}
-` : ''}
-
-Fecha: ${new Date().toLocaleDateString()}
-        `)
-
-        window.location.href = `mailto:ventas@agrivolt.mx?subject=${subject}&body=${body}`
+            if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Error en el envío')
       }
 
       setSubmitStatus('success')
