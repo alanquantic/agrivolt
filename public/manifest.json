@@ -1,0 +1,21 @@
+{
+  "name": "AgriVolt - Drones Agrícolas",
+  "short_name": "AgriVolt",
+  "description": "Drones agrícolas para pulverización, esparcido y izaje. Cobertura uniforme, ahorro de pesticidas y operación segura.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2d39f1",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
