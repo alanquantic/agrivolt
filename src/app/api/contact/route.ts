@@ -160,7 +160,7 @@ function generateAdminEmailHTML(body: Record<string, unknown>, textContent: stri
     <div class="container">
         <div class="header">
             <div class="logo">
-                <img src="https://agrivolt.mx/img/AgriVolt_logo_oficial.png" alt="AgriVolt" style="height: 40px; width: auto; margin-bottom: 10px;">
+                <img src="https://agrivolt-red.vercel.app/img/AgriVolt_logo_oficial.png" alt="AgriVolt" style="height: 40px; width: auto; margin-bottom: 10px;">
                 <div style="color: white; font-size: 28px; font-weight: bold;">AgriVolt</div>
             </div>
             <div class="subtitle">Nueva solicitud de cotización</div>
@@ -274,7 +274,7 @@ function generateCustomerEmailHTML(body: Record<string, unknown>, _textContent: 
     <div class="container">
         <div class="header">
             <div class="logo">
-                <img src="https://agrivolt.mx/img/AgriVolt_logo_oficial.png" alt="AgriVolt" style="height: 40px; width: auto; margin-bottom: 10px;">
+                <img src="https://agrivolt-red.vercel.app/img/AgriVolt_logo_oficial.png" alt="AgriVolt" style="height: 40px; width: auto; margin-bottom: 10px;">
                 <div style="color: white; font-size: 28px; font-weight: bold;">AgriVolt</div>
             </div>
             <div class="subtitle">Confirmación de solicitud</div>
@@ -304,7 +304,7 @@ function generateCustomerEmailHTML(body: Record<string, unknown>, _textContent: 
             </div>
 
             <div style="text-align: center; margin-top: 25px;">
-                <a href="https://agrivolt.mx" class="cta-button">🌐 Visitar nuestro sitio web</a>
+                <a href="https://agrivolt-red.vercel.app" class="cta-button">🌐 Visitar nuestro sitio web</a>
             </div>
         </div>
 
