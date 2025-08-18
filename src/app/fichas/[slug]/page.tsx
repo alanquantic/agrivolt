@@ -95,7 +95,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
           /* Configuración de página */
           @page {
             size: A4;
-            margin: 1cm;
+            margin: 0.5cm;
           }
           
           /* Ocultar elementos de navegación */
@@ -107,8 +107,8 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
           body { 
             background: white !important; 
             color: black !important; 
-            font-size: 12px !important; 
-            line-height: 1.4 !important; 
+            font-size: 11px !important; 
+            line-height: 1.3 !important; 
           }
           
           main { 
@@ -129,7 +129,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
           .sheet > div:first-child {
             background: #2d39f1 !important;
             color: white !important;
-            padding: 15px !important;
+            padding: 10px !important;
           }
           
           /* Imagen del modelo en header */
@@ -138,8 +138,9 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
             height: 120px !important;
             border: 2px solid rgba(255,255,255,0.3) !important;
             border-radius: 8px !important;
-            object-fit: cover !important;
+            object-fit: contain !important;
             display: block !important;
+            background: rgba(255,255,255,0.1) !important;
           }
           
           /* Logo de AgriVolt en footer */
@@ -152,25 +153,25 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
           
           /* Contenido principal */
           .sheet > div:last-child {
-            padding: 15px !important; 
+            padding: 10px !important; 
           }
           
           /* Títulos */
           h1, h2 {
             color: black !important;
-            margin-bottom: 8px !important; 
+            margin-bottom: 6px !important; 
           }
           
           /* Tabla compacta */
           table { 
             border-collapse: collapse !important; 
             width: 100% !important;
-            font-size: 11px !important;
+            font-size: 10px !important;
           }
           
           th, td { 
             border: 1px solid #ddd !important; 
-            padding: 6px !important; 
+            padding: 4px !important; 
             text-align: left !important;
           }
           
@@ -181,8 +182,8 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
           
           /* Bullets más pequeños */
           svg {
-            width: 12px !important;
-            height: 12px !important;
+            width: 10px !important;
+            height: 10px !important;
           }
           
           /* Tags más compactos */
@@ -222,7 +223,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
                 <img 
                   src={modelo.img} 
                   alt={modelo.nombre} 
-                  className="w-32 h-32 object-cover rounded-lg border-2 border-white/20 shadow-lg"
+                  className="w-32 h-32 object-contain rounded-lg border-2 border-white/20 shadow-lg bg-white/10"
                 />
                 <div>
                   <h1 className="text-2xl font-bold font-display">{modelo.nombre}</h1>
@@ -236,7 +237,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
             </div>
           </div>
 
-          <div className="p-4 space-y-4">
+          <div className="p-4 space-y-3">
             {/* Resumen compacto */}
             <section>
               <h2 className="text-lg font-bold font-display mb-2 text-slate-900">Resumen</h2>
