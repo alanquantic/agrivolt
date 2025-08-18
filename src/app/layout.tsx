@@ -88,9 +88,23 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         {/* Favicon */}
-        <link rel="icon" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/AgriVolt_logo_oficial.png" />
         <link rel="shortcut icon" href="/img/AgriVolt_logo_oficial.png" />
-        <link rel="apple-touch-icon" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="/img/AgriVolt_logo_oficial.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/img/AgriVolt_logo_oficial.png" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="AgriVolt" />
+        {/* Web App Manifest */}
+        <link rel="manifest" href="/manifest.json" />
         {/* Theme color */}
         <meta name="theme-color" content="#2d39f1" />
         {/* Organization JSON-LD */}
