@@ -32,17 +32,17 @@ export const metadata: Metadata = {
     'tecnología agrícola',
     'LATAM'
   ],
-  authors: [{ name: 'AgriVolt', url: 'https://agrivolt.mx' }],
+  authors: [{ name: 'AgriVolt', url: 'https://www.agrivoltdrone.com' }],
   creator: 'AgriVolt',
   publisher: 'AgriVolt',
-  metadataBase: new URL('https://agrivolt.mx'),
+  metadataBase: new URL('https://www.agrivoltdrone.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'es_MX',
-    url: 'https://agrivolt.mx',
+    url: 'https://www.agrivoltdrone.com',
     siteName: 'AgriVolt',
     title: 'AgriVolt — Drones agrícolas: precisión, potencia y ahorro de insumos',
     description: 'Drones agrícolas para pulverización, esparcido y izaje. Cobertura uniforme, ahorro de pesticidas y operación segura. Distribución para Latinoamérica desde México.',
@@ -86,9 +86,10 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         {/* Favicon */}
-        <link rel="icon" href="/favicon.png" />
-        <link rel="shortcut icon" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
+                         <link rel="icon" type="image/png" sizes="32x32" href="/img/AgriVolt_logo_oficial.png" />
+                 <link rel="icon" type="image/png" sizes="16x16" href="/img/AgriVolt_logo_oficial.png" />
+                 <link rel="shortcut icon" href="/img/AgriVolt_logo_oficial.png" />
+                 <link rel="apple-touch-icon" sizes="180x180" href="/img/AgriVolt_logo_oficial.png" />
         {/* Theme color */}
         <meta name="theme-color" content="#2d39f1" />
         {/* Organization JSON-LD */}
@@ -99,8 +100,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "AgriVolt",
-              "url": "https://agrivolt.mx",
-              "logo": "https://agrivolt.mx/img/AgriVolt_logo_oficial.png",
+              "url": "https://www.agrivoltdrone.com",
+              "logo": "https://www.agrivoltdrone.com/img/AgriVolt_logo_oficial.png",
               "description": "Drones agrícolas para pulverización, esparcido y izaje con tecnología de precisión",
               "address": {
                 "@type": "PostalAddress",
