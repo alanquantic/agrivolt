@@ -132,13 +132,21 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
             padding: 15px !important;
           }
           
-          /* Imagen en header */
+          /* Imagen del modelo en header */
           .sheet > div:first-child img {
-            width: 60px !important;
-            height: 60px !important;
+            width: 90px !important;
+            height: 90px !important;
             border: 2px solid rgba(255,255,255,0.3) !important;
             border-radius: 8px !important;
             object-fit: cover !important;
+            display: block !important;
+          }
+          
+          /* Logo de AgriVolt en footer */
+          .sheet > div:last-child > div:last-child img {
+            height: 30px !important;
+            width: auto !important;
+            opacity: 0.8 !important;
             display: block !important;
           }
           
@@ -214,7 +222,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
                 <img 
                   src={modelo.img} 
                   alt={modelo.nombre} 
-                  className="w-16 h-16 object-cover rounded-lg border-2 border-white/20 shadow-lg"
+                  className="w-24 h-24 object-cover rounded-lg border-2 border-white/20 shadow-lg"
                 />
                 <div>
                   <h1 className="text-2xl font-bold font-display">{modelo.nombre}</h1>
@@ -276,10 +284,19 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
               </section>
             ) : null}
 
-            {/* Footer */}
-            <div className="pt-2 border-t border-black/10 text-center text-xs text-slate-500">
-              <p>AgriVolt - Drones Agrícolas de Precisión</p>
-              <p>www.agrivolt.mx | ventas@agrivolt.mx</p>
+            {/* Footer con logo */}
+            <div className="pt-4 border-t border-black/10">
+              <div className="flex items-center justify-center gap-3">
+                <img 
+                  src="/img/AgriVolt_logo_oficial.png" 
+                  alt="AgriVolt Logo" 
+                  className="h-8 w-auto opacity-80"
+                />
+                <div className="text-center text-xs text-slate-500">
+                  <p className="font-medium">AgriVolt - Drones Agrícolas de Precisión</p>
+                  <p>www.agrivolt.mx | ventas@agrivolt.mx</p>
+                </div>
+              </div>
             </div>
           </div>
         </article>
