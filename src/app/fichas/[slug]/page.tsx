@@ -97,12 +97,92 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
 
   return (
     <main className="min-h-screen">
-      {/* Estilos de impresión */}
+      {/* Estilos de impresión mejorados */}
       <style>{`
         @media print {
-          header, footer, nav, .no-print { display: none !important; }
-          main { padding: 0 !important; }
-          .sheet { box-shadow: none !important; border: none !important; }
+          /* Ocultar elementos de navegación */
+          header, footer, nav, .no-print { 
+            display: none !important; 
+          }
+          
+          /* Reset de márgenes y padding */
+          * { 
+            margin: 0 !important; 
+            padding: 0 !important; 
+          }
+          
+          body { 
+            background: white !important; 
+            color: black !important; 
+          }
+          
+          main { 
+            padding: 0 !important; 
+            margin: 0 !important; 
+          }
+          
+          /* Asegurar que las imágenes se impriman */
+          img { 
+            display: block !important; 
+            max-width: 100% !important; 
+            height: auto !important; 
+            page-break-inside: avoid !important; 
+          }
+          
+          /* Estilos del sheet */
+          .sheet { 
+            box-shadow: none !important; 
+            border: none !important; 
+            margin: 0 !important; 
+            padding: 0 !important; 
+          }
+          
+          /* Evitar saltos de página en elementos importantes */
+          .hero-section { 
+            page-break-inside: avoid !important; 
+          }
+          
+          /* Asegurar que las tablas se impriman bien */
+          table { 
+            border-collapse: collapse !important; 
+          }
+          
+          th, td { 
+            border: 1px solid #ccc !important; 
+            padding: 8px !important; 
+          }
+          
+          /* Mejorar visibilidad de textos en impresión */
+          .print-title { 
+            color: black !important; 
+            text-shadow: none !important; 
+            background: white !important; 
+            padding: 10px !important; 
+          }
+          
+          .print-subtitle { 
+            color: #333 !important; 
+            text-shadow: none !important; 
+            background: white !important; 
+            padding: 5px 10px !important; 
+          }
+          
+          .print-price { 
+            background: #f0f0f0 !important; 
+            color: black !important; 
+            border: 1px solid #ccc !important; 
+          }
+          
+          /* Asegurar que el contenido sea legible */
+          .sheet > div { 
+            padding: 20px !important; 
+          }
+          
+          /* Evitar que las imágenes se corten */
+          .hero-section img { 
+            max-height: 300px !important; 
+            object-fit: cover !important; 
+          }
         }
       `}</style>
 
@@ -117,17 +197,17 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
 
         <article className="sheet mt-6 bg-white rounded-2xl border border-black/5 shadow-lg overflow-hidden">
           {/* Hero de ficha */}
-          <div className="relative">
+          <div className="relative hero-section">
             <img src={modelo.img} alt={modelo.nombre} className="w-full h-72 object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between">
+            <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between print-text">
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold font-display text-white drop-shadow">
+                <h1 className="text-3xl md:text-4xl font-bold font-display text-white drop-shadow print-title">
                   {modelo.nombre}
                 </h1>
-                <p className="text-white/90 mt-1 drop-shadow">{modelo.claim}</p>
+                <p className="text-white/90 mt-1 drop-shadow print-subtitle">{modelo.claim}</p>
               </div>
-              <span className="px-3 py-1 rounded-full bg-white/90 text-slate-900 text-sm">
+              <span className="px-3 py-1 rounded-full bg-white/90 text-slate-900 text-sm print-price">
                 {modelo.precio_desde}
               </span>
             </div>
