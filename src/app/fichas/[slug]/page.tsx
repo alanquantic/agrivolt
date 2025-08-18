@@ -132,6 +132,16 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
             padding: 15px !important;
           }
           
+          /* Imagen en header */
+          .sheet > div:first-child img {
+            width: 60px !important;
+            height: 60px !important;
+            border: 2px solid rgba(255,255,255,0.3) !important;
+            border-radius: 8px !important;
+            object-fit: cover !important;
+            display: block !important;
+          }
+          
           /* Contenido principal */
           .sheet > div:last-child {
             padding: 15px !important; 
@@ -197,12 +207,19 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
         </div>
 
         <article className="sheet mt-6 bg-white rounded-2xl border border-black/5 shadow-lg overflow-hidden">
-          {/* Header compacto */}
+          {/* Header compacto con imagen */}
           <div className="bg-gradient-to-r from-primary to-primary/80 p-4 text-white">
             <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-2xl font-bold font-display">{modelo.nombre}</h1>
-                <p className="text-white/90 text-sm mt-1">{modelo.claim}</p>
+              <div className="flex items-center gap-4">
+                <img 
+                  src={modelo.img} 
+                  alt={modelo.nombre} 
+                  className="w-16 h-16 object-cover rounded-lg border-2 border-white/20 shadow-lg"
+                />
+                <div>
+                  <h1 className="text-2xl font-bold font-display">{modelo.nombre}</h1>
+                  <p className="text-white/90 text-sm mt-1">{modelo.claim}</p>
+                </div>
               </div>
               <div className="text-right">
                 <div className="text-lg font-bold">{modelo.precio_desde}</div>
