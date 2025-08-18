@@ -57,15 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-function SpecRow({ label, value }: { label: string; value?: string }) {
-  if (!value || value === '—') return null
-  return (
-    <tr className="border-b border-black/5 last:border-b-0">
-      <th className="text-left p-3 bg-slate-50 font-medium text-slate-900 w-1/3">{label}</th>
-      <td className="p-3 text-slate-700">{value}</td>
-    </tr>
-  )
-}
+
 
 export default async function FichaTecnicaPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -97,23 +89,26 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
 
   return (
     <main className="min-h-screen">
-      {/* Estilos de impresión mejorados */}
+      {/* Estilos de impresión optimizados para una página */}
       <style>{`
         @media print {
+          /* Configuración de página */
+          @page {
+            size: A4;
+            margin: 1cm;
+          }
+          
           /* Ocultar elementos de navegación */
           header, footer, nav, .no-print { 
             display: none !important; 
           }
           
-          /* Reset de márgenes y padding */
-          * { 
-            margin: 0 !important; 
-            padding: 0 !important; 
-          }
-          
+          /* Reset básico */
           body { 
             background: white !important; 
             color: black !important; 
+            font-size: 12px !important; 
+            line-height: 1.4 !important; 
           }
           
           main { 
@@ -121,67 +116,73 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
             margin: 0 !important; 
           }
           
-          /* Asegurar que las imágenes se impriman */
-          img { 
-            display: block !important; 
-            max-width: 100% !important; 
-            height: auto !important; 
-            page-break-inside: avoid !important; 
-          }
-          
           /* Estilos del sheet */
           .sheet { 
             box-shadow: none !important; 
-            border: none !important; 
+            border: 1px solid #ccc !important; 
             margin: 0 !important; 
             padding: 0 !important; 
-          }
-          
-          /* Evitar saltos de página en elementos importantes */
-          .hero-section { 
             page-break-inside: avoid !important; 
           }
           
-          /* Asegurar que las tablas se impriman bien */
+          /* Header compacto */
+          .sheet > div:first-child {
+            background: #2d39f1 !important;
+            color: white !important;
+            padding: 15px !important;
+          }
+          
+          /* Contenido principal */
+          .sheet > div:last-child {
+            padding: 15px !important; 
+          }
+          
+          /* Títulos */
+          h1, h2 {
+            color: black !important;
+            margin-bottom: 8px !important; 
+          }
+          
+          /* Tabla compacta */
           table { 
             border-collapse: collapse !important; 
+            width: 100% !important;
+            font-size: 11px !important;
           }
           
           th, td { 
-            border: 1px solid #ccc !important; 
-            padding: 8px !important; 
+            border: 1px solid #ddd !important; 
+            padding: 6px !important; 
+            text-align: left !important;
           }
           
-          /* Mejorar visibilidad de textos en impresión */
-          .print-title { 
-            color: black !important; 
-            text-shadow: none !important; 
-            background: white !important; 
-            padding: 10px !important; 
+          th {
+            background: #f5f5f5 !important;
+            font-weight: bold !important;
           }
           
-          .print-subtitle { 
-            color: #333 !important; 
-            text-shadow: none !important; 
-            background: white !important; 
-            padding: 5px 10px !important; 
+          /* Bullets más pequeños */
+          svg {
+            width: 12px !important;
+            height: 12px !important;
           }
           
-          .print-price { 
-            background: #f0f0f0 !important; 
-            color: black !important; 
-            border: 1px solid #ccc !important; 
+          /* Tags más compactos */
+          span[class*="bg-slate-100"] {
+            background: #f0f0f0 !important;
+            border: 1px solid #ddd !important;
+            padding: 3px 6px !important;
+            font-size: 10px !important;
           }
           
-          /* Asegurar que el contenido sea legible */
-          .sheet > div { 
-            padding: 20px !important; 
-          }
-          
-          /* Evitar que las imágenes se corten */
-          .hero-section img { 
-            max-height: 300px !important; 
-            object-fit: cover !important; 
+          /* Footer */
+          .sheet > div:last-child > div:last-child {
+            border-top: 1px solid #ddd !important;
+            padding-top: 10px !important;
+            margin-top: 10px !important;
+            text-align: center !important;
+            font-size: 10px !important;
+            color: #666 !important;
           }
         }
       `}</style>
@@ -196,67 +197,73 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
         </div>
 
         <article className="sheet mt-6 bg-white rounded-2xl border border-black/5 shadow-lg overflow-hidden">
-          {/* Hero de ficha */}
-          <div className="relative hero-section">
-            <img src={modelo.img} alt={modelo.nombre} className="w-full h-72 object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-5 left-6 right-6 flex items-end justify-between print-text">
+          {/* Header compacto */}
+          <div className="bg-gradient-to-r from-primary to-primary/80 p-4 text-white">
+            <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold font-display text-white drop-shadow print-title">
-                  {modelo.nombre}
-                </h1>
-                <p className="text-white/90 mt-1 drop-shadow print-subtitle">{modelo.claim}</p>
+                <h1 className="text-2xl font-bold font-display">{modelo.nombre}</h1>
+                <p className="text-white/90 text-sm mt-1">{modelo.claim}</p>
               </div>
-              <span className="px-3 py-1 rounded-full bg-white/90 text-slate-900 text-sm print-price">
-                {modelo.precio_desde}
-              </span>
+              <div className="text-right">
+                <div className="text-lg font-bold">{modelo.precio_desde}</div>
+                <div className="text-xs opacity-75">SKU: {modelo.sku}</div>
+              </div>
             </div>
           </div>
 
-          <div className="p-6 md:p-8 space-y-8">
-            {/* Resumen / bullets */}
+          <div className="p-4 space-y-4">
+            {/* Resumen compacto */}
             <section>
-              <h2 className="text-xl font-bold font-display mb-3">Resumen</h2>
-              <p className="text-slate-700 mb-4">{modelo.descripcion}</p>
-              <ul className="grid sm:grid-cols-2 gap-2 text-sm">
-                {modelo.bullets.map((b, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" className="h-4 w-4 mt-0.5 text-primary">
+              <h2 className="text-lg font-bold font-display mb-2 text-slate-900">Resumen</h2>
+              <p className="text-slate-700 text-sm mb-3">{modelo.descripcion}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-xs">
+                {modelo.bullets.slice(0, 6).map((b, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" className="h-3 w-3 mt-0.5 text-primary flex-shrink-0">
                       <path d="M20 6L9 17l-5-5"></path>
                     </svg>
-                    <span>{b}</span>
-                  </li>
+                    <span className="text-slate-700">{b}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </section>
 
-            {/* Tabla técnica */}
+            {/* Tabla técnica compacta */}
             <section>
-              <h2 className="text-xl font-bold font-display mb-3">Especificaciones técnicas</h2>
-              <div className="rounded-2xl border border-black/5 overflow-hidden">
-                <table className="w-full">
+              <h2 className="text-lg font-bold font-display mb-2 text-slate-900">Especificaciones técnicas</h2>
+              <div className="border border-black/10 rounded-lg overflow-hidden">
+                <table className="w-full text-xs">
                   <tbody>
-                    {tablaOrden.map(([label, value]) => (
-                      <SpecRow key={label} label={label} value={value} />
+                    {tablaOrden.slice(0, 12).map(([label, value]) => (
+                      <tr key={label} className="border-b border-black/5 last:border-b-0">
+                        <th className="text-left p-2 bg-slate-50 font-medium text-slate-900 w-2/5">{label}</th>
+                        <td className="p-2 text-slate-700">{value || '—'}</td>
+                      </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </section>
 
-            {/* Usos recomendados */}
+            {/* Usos recomendados compactos */}
             {modelo.usos_recomendados?.length ? (
               <section>
-                <h2 className="text-xl font-bold font-display mb-3">Usos recomendados</h2>
-                <div className="flex flex-wrap gap-2">
-                  {modelo.usos_recomendados.map((u, i) => (
-                    <span key={i} className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">
+                <h2 className="text-lg font-bold font-display mb-2 text-slate-900">Usos recomendados</h2>
+                <div className="flex flex-wrap gap-1">
+                  {modelo.usos_recomendados.slice(0, 4).map((u, i) => (
+                    <span key={i} className="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs">
                       {u}
                     </span>
                   ))}
                 </div>
               </section>
             ) : null}
+
+            {/* Footer */}
+            <div className="pt-2 border-t border-black/10 text-center text-xs text-slate-500">
+              <p>AgriVolt - Drones Agrícolas de Precisión</p>
+              <p>www.agrivolt.mx | ventas@agrivolt.mx</p>
+            </div>
           </div>
         </article>
 
