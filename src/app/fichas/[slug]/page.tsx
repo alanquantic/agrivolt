@@ -134,8 +134,8 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
           
           /* Imagen del modelo en header */
           .sheet > div:first-child img {
-            width: 90px !important;
-            height: 90px !important;
+            width: 120px !important;
+            height: 120px !important;
             border: 2px solid rgba(255,255,255,0.3) !important;
             border-radius: 8px !important;
             object-fit: cover !important;
@@ -222,7 +222,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
                 <img 
                   src={modelo.img} 
                   alt={modelo.nombre} 
-                  className="w-24 h-24 object-cover rounded-lg border-2 border-white/20 shadow-lg"
+                  className="w-32 h-32 object-cover rounded-lg border-2 border-white/20 shadow-lg"
                 />
                 <div>
                   <h1 className="text-2xl font-bold font-display">{modelo.nombre}</h1>
@@ -242,7 +242,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
               <h2 className="text-lg font-bold font-display mb-2 text-slate-900">Resumen</h2>
               <p className="text-slate-700 text-sm mb-3">{modelo.descripcion}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-xs">
-                {modelo.bullets.slice(0, 6).map((b, i) => (
+                                 {modelo.bullets.map((b, i) => (
                   <div key={i} className="flex items-start gap-2">
                     <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" className="h-3 w-3 mt-0.5 text-primary flex-shrink-0">
                       <path d="M20 6L9 17l-5-5"></path>
@@ -259,7 +259,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
               <div className="border border-black/10 rounded-lg overflow-hidden">
                 <table className="w-full text-xs">
                   <tbody>
-                    {tablaOrden.slice(0, 12).map(([label, value]) => (
+                                         {tablaOrden.map(([label, value]) => (
                       <tr key={label} className="border-b border-black/5 last:border-b-0">
                         <th className="text-left p-2 bg-slate-50 font-medium text-slate-900 w-2/5">{label}</th>
                         <td className="p-2 text-slate-700">{value || '—'}</td>
@@ -275,7 +275,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
               <section>
                 <h2 className="text-lg font-bold font-display mb-2 text-slate-900">Usos recomendados</h2>
                 <div className="flex flex-wrap gap-1">
-                  {modelo.usos_recomendados.slice(0, 4).map((u, i) => (
+                                     {modelo.usos_recomendados.map((u, i) => (
                     <span key={i} className="px-2 py-1 bg-slate-100 text-slate-700 rounded text-xs">
                       {u}
                     </span>
