@@ -57,7 +57,7 @@ export default function Footer() {
         <div>
           <h5 className="font-semibold mb-3">Contacto</h5>
           <ul className="text-sm text-slate-600 space-y-2">
-            <li>📞 +52 000 000 0000</li>
+                            <li>📞 +52 449 448 0012</li>
             <li>
               <a href="mailto:ventas@agrivolt.mx" className="hover:text-slate-900 transition-colors">
                 ✉️ ventas@agrivolt.mx

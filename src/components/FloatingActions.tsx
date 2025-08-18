@@ -4,7 +4,7 @@ export default function FloatingActions() {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
       <a
-        href="https://wa.me/520000000000?text=Hola%20AgriVolt,%20quiero%20información%20de%20sus%20drones"
+        href="https://wa.me/524494480012?text=Hola%20AgriVolt,%20quiero%20información%20de%20sus%20drones"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
@@ -16,7 +16,7 @@ export default function FloatingActions() {
         </svg>
       </a>
       <a
-        href="tel:+520000000000"
+        href="tel:+524494480012"
         aria-label="Llamar por teléfono"
         className="rounded-full w-14 h-14 grid place-items-center bg-primary text-white shadow-lg hover:bg-primary/90 transition-colors"
       >

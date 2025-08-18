@@ -110,7 +110,7 @@ export default function RootLayout({
               },
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+52-000-000-0000",
+                                       "telephone": "+52-449-448-0012",
                 "contactType": "sales",
                 "email": "ventas@agrivolt.mx",
                 "availableLanguage": ["Spanish"]

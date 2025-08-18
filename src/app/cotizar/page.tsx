@@ -262,7 +262,7 @@ export default function CotizarPage() {
                     value={formData.telefono}
                     onChange={(e) => handleInputChange('telefono', e.target.value)}
                     className={`w-full px-4 py-3 rounded-xl border ${errors.telefono ? 'border-red-300' : 'border-black/10'} focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary`}
-                    placeholder="+52 000 000 0000"
+                    placeholder="+52 449 448 0012"
                   />
                   {errors.telefono && <p className="mt-1 text-sm text-red-600">{errors.telefono}</p>}
                 </div>

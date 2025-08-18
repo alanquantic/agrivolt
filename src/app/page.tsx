@@ -341,7 +341,7 @@ export default function Home() {
                   Cuéntanos tus cultivos, hectáreas y necesidades específicas.
                 </p>
                 <ul className="mt-4 text-sm text-slate-700 space-y-1">
-                  <li>📞 +52 000 000 0000</li>
+                  <li>📞 +52 449 448 0012</li>
                   <li>✉️ ventas@agrivolt.mx</li>
                   <li>📍 Aguascalientes, México</li>
                 </ul>

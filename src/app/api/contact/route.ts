@@ -97,7 +97,7 @@ Resumen de tu solicitud:
 
 Si tienes alguna pregunta urgente, puedes contactarnos directamente a:
 - Email: ventas@agrivolt.mx
-- WhatsApp: +52 [número]
+- WhatsApp: +52 449 448 0012
 
 Saludos,
 Equipo AgriVolt
@@ -299,7 +299,7 @@ function generateCustomerEmailHTML(body: Record<string, unknown>, _textContent: 
                 <p>Puedes contactarnos directamente a:</p>
                 <ul>
                     <li>📧 Email: <a href="mailto:ventas@agrivolt.mx">ventas@agrivolt.mx</a></li>
-                    <li>📱 WhatsApp: +52 [número]</li>
+                    <li>📱 WhatsApp: +52 449 448 0012</li>
                 </ul>
             </div>
 
