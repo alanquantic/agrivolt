@@ -96,7 +96,7 @@ Resumen de tu solicitud:
 - Superficie: ${body.superficie}
 
 Si tienes alguna pregunta urgente, puedes contactarnos directamente a:
-- Email: ventas@agrivolt.mx
+- Email: ventas@agrivoltdrone.com
 - WhatsApp: +52 449 448 0012
 
 Saludos,
@@ -298,7 +298,7 @@ function generateCustomerEmailHTML(body: Record<string, unknown>, _textContent: 
                 <div class="contact-title">📞 ¿Tienes alguna pregunta urgente?</div>
                 <p>Puedes contactarnos directamente a:</p>
                 <ul>
-                    <li>📧 Email: <a href="mailto:ventas@agrivolt.mx">ventas@agrivolt.mx</a></li>
+                    <li>📧 Email: <a href="mailto:ventas@agrivoltdrone.com">ventas@agrivoltdrone.com</a></li>
                     <li>📱 WhatsApp: +52 449 448 0012</li>
                 </ul>
             </div>

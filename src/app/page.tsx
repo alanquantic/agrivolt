@@ -342,7 +342,7 @@ export default function Home() {
                 </p>
                 <ul className="mt-4 text-sm text-slate-700 space-y-1">
                   <li>📞 +52 449 448 0012</li>
-                  <li>✉️ ventas@agrivolt.mx</li>
+                                      <li>✉️ ventas@agrivoltdrone.com</li>
                   <li>📍 Aguascalientes, México</li>
                 </ul>
               </div>

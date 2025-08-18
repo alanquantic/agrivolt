@@ -98,8 +98,8 @@ export default async function ProductoPage({ params }: PageProps) {
             "sku": modelo.sku,
             "category": "Drones agrícolas",
             "description": modelo.descripcion,
-            "image": [`https://agrivolt.mx${modelo.img}`],
-            "url": `https://agrivolt.mx/drones/${modelo.slug}`,
+                    "image": [`https://www.agrivoltdrone.com${modelo.img}`],
+        "url": `https://www.agrivoltdrone.com/drones/${modelo.slug}`,
             "additionalProperty": especificacionesTabla.map(spec => ({
               "@type": "PropertyValue",
               "name": spec.label,

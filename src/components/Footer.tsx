@@ -59,8 +59,8 @@ export default function Footer() {
           <ul className="text-sm text-slate-600 space-y-2">
                             <li>📞 +52 449 448 0012</li>
             <li>
-              <a href="mailto:ventas@agrivolt.mx" className="hover:text-slate-900 transition-colors">
-                ✉️ ventas@agrivolt.mx
+                              <a href="mailto:ventas@agrivoltdrone.com" className="hover:text-slate-900 transition-colors">
+                  ✉️ ventas@agrivoltdrone.com
               </a>
             </li>
             <li>📍 Aguascalientes, México</li>

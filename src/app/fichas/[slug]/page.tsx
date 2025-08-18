@@ -295,7 +295,7 @@ export default async function FichaTecnicaPage({ params }: { params: Promise<{ s
                 />
                 <div className="text-center text-xs text-slate-500">
                   <p className="font-medium">AgriVolt - Drones Agrícolas de Precisión</p>
-                  <p>www.agrivolt.mx | ventas@agrivolt.mx</p>
+                  <p>www.agrivoltdrone.com | ventas@agrivoltdrone.com</p>
                 </div>
               </div>
             </div>
