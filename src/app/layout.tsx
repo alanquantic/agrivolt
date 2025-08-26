@@ -109,6 +109,18 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         {/* Theme color */}
         <meta name="theme-color" content="#2d39f1" />
+        {/* Google Ads */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17500187331"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17500187331');
+            `
+          }}
+        />
         {/* Organization JSON-LD */}
         <script
           type="application/ld+json"
