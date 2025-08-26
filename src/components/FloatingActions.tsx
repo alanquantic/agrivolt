@@ -1,6 +1,17 @@
 'use client'
 
 export default function FloatingActions() {
+  const handleWhatsAppClick = () => {
+    // Google Ads conversion tracking
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17500187331/VBYLCPOBro4bEMPV3phB',
+        'value': 1.0,
+        'currency': 'USD'
+      });
+    }
+  }
+
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
       <a
@@ -9,6 +20,7 @@ export default function FloatingActions() {
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
         className="rounded-full w-14 h-14 grid place-items-center bg-primary text-white shadow-lg hover:bg-primary/90 transition-colors"
+        onClick={handleWhatsAppClick}
       >
         {/* WhatsApp icon */}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

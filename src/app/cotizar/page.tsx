@@ -136,6 +136,15 @@ export default function CotizarPage() {
         throw new Error(errorData.error || 'Error en el envío')
       }
 
+      // Google Ads conversion tracking
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-17500187331/VBYLCPOBro4bEMPV3phB',
+          'value': 1.0,
+          'currency': 'USD'
+        });
+      }
+      
       setSubmitStatus('success')
     } catch (error) {
       console.error('Error:', error)
