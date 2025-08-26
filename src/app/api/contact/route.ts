@@ -107,7 +107,7 @@ Equipo AgriVolt
     confirmationFormData.append('from', `AgriVolt <noreply@${MAILGUN_DOMAIN}>`)
     confirmationFormData.append('to', body.email)
     confirmationFormData.append('subject', 'Confirmación - Solicitud de cotización AgriVolt')
-    confirmationFormData.append('html', generateCustomerEmailHTML(body, confirmationContent))
+              confirmationFormData.append('html', generateCustomerEmailHTML(body))
     confirmationFormData.append('text', confirmationContent)
 
     await fetch(`https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages`, {
@@ -245,7 +245,7 @@ function generateAdminEmailHTML(body: Record<string, unknown>, textContent: stri
 }
 
 // Función para generar email HTML para el cliente
-function generateCustomerEmailHTML(body: Record<string, unknown>, _textContent: string) {
+function generateCustomerEmailHTML(body: Record<string, unknown>) {
   return `
 <!DOCTYPE html>
 <html lang="es">

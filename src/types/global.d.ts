@@ -7,10 +7,10 @@ declare global {
         send_to?: string
         value?: number
         currency?: string
-        [key: string]: any
+        [key: string]: string | number | undefined
       }
     ) => void
-    dataLayer: any[]
+    dataLayer: Record<string, unknown>[]
   }
 }
 
