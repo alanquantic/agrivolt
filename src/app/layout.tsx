@@ -109,6 +109,8 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         {/* Theme color */}
         <meta name="theme-color" content="#2d39f1" />
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="47aIDclBpjS_WLrhUZPEuBGg8GR9rLhhDrxAJ-0-xrI" />
         {/* Google Ads */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17500187331"></script>
         <script
