@@ -74,11 +74,7 @@ async function createOdooLead(leadData: Record<string, unknown>) {
         args: [{
           name: leadData.name || 'Cotización AgriVolt',
           contact_name: leadData.contact_name,
-          email_from: leadData.email,
-          email_cc: leadData.email, // Campo CC para el email
-          contact_email: leadData.email, // Campo para el email del contacto
-          partner_email: leadData.email, // Campo del partner
-          email: leadData.email, // Campo directo de email
+          email_from: leadData.email || leadData.email_from, // ✅ Campo correcto para Odoo
           phone: leadData.phone || '',
           description: leadData.description || '',
           company_id: ODOO_CONFIG.companyId,
@@ -180,7 +176,7 @@ Fecha: ${new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })
     const leadData = {
       name: `Cotización ${customer.type} - ${customer.name}`,
       contact_name: customer.name,
-      email_from: customer.email,
+      email: customer.email, // ✅ Campo para el payload interno
       phone: customer.phone,
       description
     }

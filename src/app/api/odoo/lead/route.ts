@@ -74,11 +74,7 @@ async function createOdooLead(leadData: Record<string, unknown>) {
         args: [{
           name: leadData.name || 'Lead desde AgriVolt',
           contact_name: leadData.contact_name,
-          email_from: leadData.email,
-          email_cc: leadData.email, // Campo CC para el email
-          contact_email: leadData.email, // Campo para el email del contacto
-          partner_email: leadData.email, // Campo del partner
-          email: leadData.email, // Campo directo de email
+          email_from: leadData.email || leadData.email_from, // ✅ Campo correcto para Odoo
           phone: leadData.phone || '',
           description: leadData.description || '',
           company_id: ODOO_CONFIG.companyId,
@@ -158,7 +154,7 @@ export async function POST(request: NextRequest) {
     const leadData = {
       name: name || `Lead de ${contact_name}`,
       contact_name,
-      email_from: email,
+      email: email, // ✅ Campo para el payload interno
       phone: phone || '',
       description: description || ''
     }

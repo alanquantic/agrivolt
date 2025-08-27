@@ -12,7 +12,7 @@ interface FormData {
   pais: string
   estado: string
   necesidad: string
-  cultivo: string
+  cultivo: string[]
   cultivoOtro: string
   superficie: string
   contacto: string
@@ -34,7 +34,7 @@ export default function CotizarPage() {
     pais: '',
     estado: '',
     necesidad: '',
-    cultivo: '',
+    cultivo: [],
     cultivoOtro: '',
     superficie: '',
     contacto: '',
@@ -85,8 +85,8 @@ export default function CotizarPage() {
       newErrors.necesidad = 'Selecciona para qué lo necesitas'
     }
 
-    if (!formData.cultivo) {
-      newErrors.cultivo = 'Selecciona el tipo de cultivo'
+    if (!formData.cultivo.length) {
+      newErrors.cultivo = 'Selecciona al menos un tipo de cultivo'
     }
 
     if (!formData.superficie) {
@@ -154,7 +154,7 @@ export default function CotizarPage() {
           version: 'Personalizado',
           color: 'N/A',
           packages: formData.modulos,
-          cultivo: formData.cultivo === 'Otros' ? formData.cultivoOtro : formData.cultivo,
+          cultivo: formData.cultivo.includes('Otros') ? [...formData.cultivo.filter(c => c !== 'Otros'), formData.cultivoOtro].join(', ') : formData.cultivo.join(', '),
           superficie: formData.superficie,
           terreno: formData.terreno,
           frecuencia: formData.frecuencia,
@@ -391,15 +391,20 @@ export default function CotizarPage() {
                   {['Maíz', 'Trigo', 'Arroz', 'Cítricos', 'Mango', 'Nuez', 'Hortalizas', 'Otros'].map(option => (
                     <label key={option} className="flex items-center">
                       <input
-                        type="radio"
+                        type="checkbox"
                         name="cultivo"
                         value={option}
-                        checked={formData.cultivo === option}
-                        onChange={(e) => handleInputChange('cultivo', e.target.value)}
+                        checked={formData.cultivo.includes(option)}
+                        onChange={(e) => {
+                          const newCultivos = e.target.checked 
+                            ? [...formData.cultivo, option]
+                            : formData.cultivo.filter(c => c !== option)
+                          handleInputChange('cultivo', newCultivos)
+                        }}
                         className="sr-only"
                       />
                       <div className={`flex-1 px-3 py-2 text-sm text-center rounded-xl border cursor-pointer transition-colors ${
-                        formData.cultivo === option 
+                        formData.cultivo.includes(option)
                           ? 'border-primary bg-primary text-white' 
                           : 'border-black/10 hover:border-primary/50'
                       }`}>
@@ -408,7 +413,7 @@ export default function CotizarPage() {
                     </label>
                   ))}
                 </div>
-                {formData.cultivo === 'Otros' && (
+                {formData.cultivo.includes('Otros') && (
                   <input
                     type="text"
                     value={formData.cultivoOtro}
