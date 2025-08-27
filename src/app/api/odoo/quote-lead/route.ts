@@ -75,7 +75,7 @@ async function createOdooLead(leadData: Record<string, unknown>) {
           name: leadData.name || 'Cotización AgriVolt',
           contact_name: leadData.contact_name,
           email_from: leadData.email,
-          email_normalized: leadData.email, // Campo normalizado para el email
+          contact_email: leadData.email, // Campo para el email del contacto
           phone: leadData.phone || '',
           description: leadData.description || '',
           company_id: ODOO_CONFIG.companyId,
