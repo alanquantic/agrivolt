@@ -77,7 +77,7 @@ export async function GET() {
 
     // Filtrar campos relacionados con email
     const emailFields = Object.entries(fieldsData.result)
-      .filter(([fieldName, fieldInfo]) => 
+      .filter(([fieldName]) => 
         fieldName.toLowerCase().includes('email') || 
         fieldName.toLowerCase().includes('mail')
       )

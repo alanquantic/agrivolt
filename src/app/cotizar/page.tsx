@@ -124,7 +124,7 @@ export default function CotizarPage() {
       // Preparar datos para envío
       const submissionData = {
         ...formData,
-        cultivo: formData.cultivo === 'Otros' ? formData.cultivoOtro : formData.cultivo,
+        cultivo: formData.cultivo.includes('Otros') ? [...formData.cultivo.filter(c => c !== 'Otros'), formData.cultivoOtro].join(', ') : formData.cultivo.join(', '),
         timestamp: new Date().toISOString()
       }
 
