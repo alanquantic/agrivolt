@@ -13,9 +13,17 @@ const ODOO_CONFIG = {
 // Función de autenticación con Odoo
 async function authenticateOdoo() {
   try {
+    console.log('🔐 Intentando autenticación con Odoo...')
+    console.log('📡 URL:', `${ODOO_CONFIG.url}/web/session/authenticate`)
+    console.log('👤 Usuario:', ODOO_CONFIG.user)
+    console.log('🗄️ Base de datos:', ODOO_CONFIG.database)
+    
     const authResponse = await fetch(`${ODOO_CONFIG.url}/web/session/authenticate`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
       body: JSON.stringify({
         jsonrpc: '2.0',
         method: 'call',
@@ -27,20 +35,26 @@ async function authenticateOdoo() {
       })
     })
 
+    console.log('📥 Status de autenticación:', authResponse.status)
+    console.log('📥 Headers:', Object.fromEntries(authResponse.headers.entries()))
+
     const authData = await authResponse.json()
+    console.log('📥 Respuesta de autenticación:', JSON.stringify(authData, null, 2))
     
     if (authData.error) {
       throw new Error(`Error de autenticación: ${authData.error.data?.message || authData.error.message}`)
     }
 
+    // Extraer cookies de la respuesta
     const cookies = authResponse.headers.get('set-cookie')
+    console.log('🍪 Cookies recibidas:', cookies)
     
     return {
       ...authData.result,
       cookies: cookies
     }
   } catch (error) {
-    console.error('Error autenticando con Odoo:', error)
+    console.error('❌ Error autenticando con Odoo:', error)
     throw error
   }
 }
@@ -48,6 +62,7 @@ async function authenticateOdoo() {
 // Función para crear leads en Odoo
 async function createOdooLead(leadData: Record<string, unknown>) {
   try {
+    console.log('🚀 Iniciando creación de lead en Odoo...')
     const auth = await authenticateOdoo()
     
     const leadPayload = {
@@ -74,25 +89,34 @@ async function createOdooLead(leadData: Record<string, unknown>) {
       }
     }
 
+    console.log('📤 Payload para crear lead:', JSON.stringify(leadPayload, null, 2))
+    console.log('🍪 Cookies para la petición:', auth.cookies)
+
     const response = await fetch(`${ODOO_CONFIG.url}/web/dataset/call_kw`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
         'Cookie': auth.cookies || '',
         'X-Requested-With': 'XMLHttpRequest'
       },
       body: JSON.stringify(leadPayload)
     })
 
+    console.log('📥 Status de creación de lead:', response.status)
+    console.log('📥 Headers de respuesta:', Object.fromEntries(response.headers.entries()))
+
     const result = await response.json()
+    console.log('📥 Respuesta de creación de lead:', JSON.stringify(result, null, 2))
     
     if (result.error) {
       throw new Error(`Error creando lead: ${result.error.data?.message || result.error.message}`)
     }
 
+    console.log('✅ Lead creado exitosamente con ID:', result.result)
     return result.result
   } catch (error) {
-    console.error('Error creando lead en Odoo:', error)
+    console.error('❌ Error creando lead en Odoo:', error)
     throw error
   }
 }
