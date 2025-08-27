@@ -15,8 +15,8 @@ export async function GET() {
   console.log('🔍 Variables de entorno:', envVars)
 
   const missingVars = Object.entries(envVars)
-    .filter(([_, value]) => !value || value === 'NO CONFIGURADO')
-    .map(([key, _]) => key)
+    .filter(([, value]) => !value || value === 'NO CONFIGURADO')
+    .map(([key]) => key)
 
   return NextResponse.json({
     ok: missingVars.length === 0,

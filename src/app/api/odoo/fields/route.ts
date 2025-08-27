@@ -77,16 +77,16 @@ export async function GET() {
 
     // Filtrar campos relacionados con email
     const emailFields = Object.entries(fieldsData.result)
-      .filter(([fieldName, fieldInfo]: [string, Record<string, unknown>]) => 
+      .filter(([fieldName, fieldInfo]) => 
         fieldName.toLowerCase().includes('email') || 
         fieldName.toLowerCase().includes('mail')
       )
-      .map(([fieldName, fieldInfo]: [string, Record<string, unknown>]) => ({
+      .map(([fieldName, fieldInfo]) => ({
         field: fieldName,
-        type: fieldInfo.type as string,
-        string: fieldInfo.string as string,
-        required: fieldInfo.required as boolean,
-        readonly: fieldInfo.readonly as boolean
+        type: (fieldInfo as Record<string, unknown>).type as string,
+        string: (fieldInfo as Record<string, unknown>).string as string,
+        required: (fieldInfo as Record<string, unknown>).required as boolean,
+        readonly: (fieldInfo as Record<string, unknown>).readonly as boolean
       }))
 
     return NextResponse.json({
