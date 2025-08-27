@@ -78,6 +78,7 @@ async function createOdooLead(leadData: Record<string, unknown>) {
           email_cc: leadData.email, // Campo CC para el email
           contact_email: leadData.email, // Campo para el email del contacto
           partner_email: leadData.email, // Campo del partner
+          email: leadData.email, // Campo directo de email
           phone: leadData.phone || '',
           description: leadData.description || '',
           company_id: ODOO_CONFIG.companyId,

@@ -78,6 +78,7 @@ async function createOdooLead(leadData: Record<string, unknown>) {
           email_cc: leadData.email, // Campo CC para el email
           contact_email: leadData.email, // Campo para el email del contacto
           partner_email: leadData.email, // Campo del partner
+          email: leadData.email, // Campo directo de email
           phone: leadData.phone || '',
           description: leadData.description || '',
           company_id: ODOO_CONFIG.companyId,
@@ -164,11 +165,14 @@ DATOS DEL CLIENTE:
 CONFIGURACIÓN DEL DRONE:
 - Modelo: ${configuration.model || 'N/A'}
 - Versión: ${configuration.version || 'N/A'}
-- Color: ${configuration.color || 'N/A'}
-- Color de Asientos: ${configuration.seats || 'N/A'}
-- Techo: ${configuration.roof || 'N/A'}
 - Paquetes: ${(configuration.packages || []).join(', ') || 'N/A'}
-- Accesorios: ${(configuration.selectedAccessories || []).join(', ') || 'N/A'}
+- Cultivo: ${configuration.cultivo || 'N/A'}
+- Superficie: ${configuration.superficie || 'N/A'}
+- Terreno: ${configuration.terreno || 'N/A'}
+- Frecuencia: ${configuration.frecuencia || 'N/A'}
+- Ventana: ${configuration.ventana || 'N/A'}
+- Presupuesto: ${configuration.presupuesto || 'N/A'}
+- Mensaje: ${configuration.mensaje || 'N/A'}
 
 Fecha: ${new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })}
     `.trim()
