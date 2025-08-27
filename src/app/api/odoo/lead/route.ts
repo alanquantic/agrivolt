@@ -68,7 +68,7 @@ async function createOdooLead(leadData: Record<string, unknown>) {
           source_id: false,
           user_id: false,
           team_id: false,
-          ...leadData.additional_fields
+          ...(leadData.additional_fields as Record<string, unknown>)
         }],
         kwargs: {}
       }
@@ -117,7 +117,6 @@ export async function POST(request: NextRequest) {
       phone, 
       contact_name, 
       description, 
-      source = 'Sitio Web AgriVolt',
       additional_fields = {} 
     } = body
 

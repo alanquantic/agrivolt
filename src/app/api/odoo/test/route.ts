@@ -10,7 +10,7 @@ const ODOO_CONFIG = {
   user: process.env.ODOO_USER || 'alan.avalos@alpha-tauro.com'
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   console.log('🧪 Endpoint de prueba Odoo llamado')
   
   try {
@@ -25,8 +25,8 @@ export async function GET(request: NextRequest) {
     }
 
     const missingVars = Object.entries(envCheck)
-      .filter(([_, value]) => !value)
-      .map(([key, _]) => key)
+      .filter(([, value]) => !value)
+      .map(([key]) => key)
 
     if (missingVars.length > 0) {
       return NextResponse.json({
