@@ -122,7 +122,7 @@ export default function CotizarPage() {
         timestamp: new Date().toISOString()
       }
 
-      // Enviar formulario a la API route
+      // Enviar formulario a la API route (Mailgun)
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -131,9 +131,57 @@ export default function CotizarPage() {
         body: JSON.stringify(submissionData)
       })
 
-            if (!response.ok) {
+      if (!response.ok) {
         const errorData = await response.json()
         throw new Error(errorData.error || 'Error en el envío')
+      }
+
+      // Enviar a Odoo CRM (lead)
+      console.log('🔄 Intentando enviar a Odoo CRM...')
+      try {
+        const customerData = {
+          name: formData.nombre,
+          email: formData.email,
+          phone: formData.telefono,
+          type: formData.necesidad,
+          units: '1',
+          city: formData.estado,
+          country: formData.pais
+        }
+
+        const configurationData = {
+          model: 'AgriVolt Drone',
+          version: 'Personalizado',
+          color: 'N/A',
+          packages: formData.modulos,
+          cultivo: formData.cultivo === 'Otros' ? formData.cultivoOtro : formData.cultivo,
+          superficie: formData.superficie,
+          terreno: formData.terreno,
+          frecuencia: formData.frecuencia,
+          ventana: formData.ventana,
+          presupuesto: formData.presupuesto,
+          mensaje: formData.mensaje
+        }
+
+        console.log('📦 Datos a enviar a Odoo:', { customer: customerData, configuration: configurationData })
+        
+        const odooResponse = await fetch('/api/odoo/quote-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ customer: customerData, configuration: configurationData })
+        })
+
+        console.log('📥 Respuesta de Odoo:', odooResponse.status, odooResponse.statusText)
+
+        if (odooResponse.ok) {
+          const odooData = await odooResponse.json()
+          console.log('✅ Lead creado en Odoo:', odooData)
+        } else {
+          const errorText = await odooResponse.text()
+          console.error('❌ Error creando lead en Odoo:', odooResponse.status, errorText)
+        }
+      } catch (odooError) {
+        console.error('💥 Error enviando a Odoo:', odooError)
       }
 
       // Google Ads conversion tracking
