@@ -82,8 +82,7 @@ async function createOdooLead(leadData: Record<string, unknown>) {
           type: 'lead',
           source_id: false,
           user_id: false,
-          team_id: false,
-          ...(leadData.additional_fields as Record<string, unknown>)
+          team_id: false
         }],
         kwargs: {}
       }
@@ -176,11 +175,7 @@ Fecha: ${new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' })
       contact_name: customer.name,
       email_from: customer.email,
       phone: customer.phone,
-      description,
-      additional_fields: {
-        source_id: false,
-        email: customer.email
-      }
+      description
     }
 
     console.log('📤 Enviando datos de cotización a Odoo:', leadData)

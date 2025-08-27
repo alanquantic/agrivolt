@@ -82,8 +82,7 @@ async function createOdooLead(leadData: Record<string, unknown>) {
           type: 'lead',
           source_id: false,
           user_id: false,
-          team_id: false,
-          ...(leadData.additional_fields as Record<string, unknown>)
+          team_id: false
         }],
         kwargs: {}
       }
@@ -157,12 +156,7 @@ export async function POST(request: NextRequest) {
       contact_name,
       email_from: email,
       phone: phone || '',
-      description: description || '',
-      additional_fields: {
-        ...additional_fields,
-        source_id: false,
-        email: email
-      }
+      description: description || ''
     }
 
     console.log('📤 Enviando datos a Odoo:', leadData)
