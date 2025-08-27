@@ -139,8 +139,7 @@ export async function POST(request: NextRequest) {
       email, 
       phone, 
       contact_name, 
-      description, 
-      additional_fields = {} 
+      description
     } = body
 
     if (!email || !contact_name) {
