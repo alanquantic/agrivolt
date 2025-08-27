@@ -12,6 +12,7 @@ interface FormData {
   pais: string
   estado: string
   necesidad: string
+  modelo: string
   cultivo: string[]
   cultivoOtro: string
   superficie: string
@@ -34,6 +35,7 @@ export default function CotizarPage() {
     pais: '',
     estado: '',
     necesidad: '',
+    modelo: '',
     cultivo: [],
     cultivoOtro: '',
     superficie: '',
@@ -83,6 +85,10 @@ export default function CotizarPage() {
 
     if (!formData.necesidad) {
       newErrors.necesidad = 'Selecciona para qué lo necesitas'
+    }
+
+    if (!formData.modelo) {
+      newErrors.modelo = 'Selecciona el modelo de drone'
     }
 
     if (!formData.cultivo.length) {
@@ -150,7 +156,7 @@ export default function CotizarPage() {
         }
 
         const configurationData = {
-          model: 'AgriVolt Drone',
+          model: formData.modelo,
           version: 'Personalizado',
           color: 'N/A',
           packages: formData.modulos,
@@ -381,6 +387,34 @@ export default function CotizarPage() {
                   ))}
                 </div>
                 {errors.necesidad && <p className="mt-1 text-sm text-red-600">{errors.necesidad}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-2">
+                  ¿Qué modelo de drone te interesa? *
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {['Titan 150', 'Pro 100', 'Edge 70'].map(option => (
+                    <label key={option} className="flex items-center">
+                      <input
+                        type="radio"
+                        name="modelo"
+                        value={option}
+                        checked={formData.modelo === option}
+                        onChange={(e) => handleInputChange('modelo', e.target.value)}
+                        className="sr-only"
+                      />
+                      <div className={`flex-1 px-3 py-2 text-sm text-center rounded-xl border cursor-pointer transition-colors ${
+                        formData.modelo === option 
+                          ? 'border-primary bg-primary text-white' 
+                          : 'border-black/10 hover:border-primary/50'
+                      }`}>
+                        {option}
+                      </div>
+                    </label>
+                  ))}
+                </div>
+                {errors.modelo && <p className="mt-1 text-sm text-red-600">{errors.modelo}</p>}
               </div>
 
               <div>
