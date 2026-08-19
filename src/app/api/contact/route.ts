@@ -1,33 +1,50 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { runAntiSpamChecks, logAndFakeSuccess } from '@/lib/anti-spam'
 
 const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY
 const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN || 'mailer.ceosnew.media'
 const TO_EMAIL = process.env.TO_EMAIL || 'alan@ceosnm.com'
 
+const okSuccess = () => NextResponse.json({ success: true })
+
 export async function POST(request: NextRequest) {
+  let body: Record<string, unknown> = {}
   try {
-    // Verificar que las variables de entorno estén configuradas
+    body = await request.json()
+  } catch {
+    logAndFakeSuccess('JSON inválido', 'CONTACT')
+    return okSuccess()
+  }
+
+  // ── Anti-spam (rechazo silencioso: 200 con cuerpo de éxito) ──
+  const antiSpam = runAntiSpamChecks({
+    body,
+    fields: { name: 'nombre', email: 'email', phone: 'telefono', message: 'mensaje' },
+    rateLimitKey: typeof body.email === 'string' ? body.email.trim().toLowerCase() : undefined,
+  })
+  if (!antiSpam.ok) {
+    logAndFakeSuccess(antiSpam.reason, 'CONTACT')
+    return okSuccess()
+  }
+
+  // Campos mínimos: si faltan, es un envío roto (probable bot).
+  const requiredFields = ['nombre', 'email', 'telefono', 'pais', 'necesidad', 'cultivo', 'superficie', 'contacto']
+  for (const field of requiredFields) {
+    if (!body[field]) {
+      logAndFakeSuccess(`campo requerido faltante: ${field}`, 'CONTACT')
+      return okSuccess()
+    }
+  }
+
+  try {
     if (!MAILGUN_API_KEY) {
+      console.error('[contact] MAILGUN_API_KEY no configurado')
       return NextResponse.json(
         { error: 'Configuración de email no disponible' },
         { status: 500 }
       )
     }
 
-    const body = await request.json()
-    
-    // Validar datos requeridos
-    const requiredFields = ['nombre', 'email', 'telefono', 'pais', 'necesidad', 'cultivo', 'superficie', 'contacto']
-    for (const field of requiredFields) {
-      if (!body[field]) {
-        return NextResponse.json(
-          { error: `Campo requerido faltante: ${field}` },
-          { status: 400 }
-        )
-      }
-    }
-
-    // Preparar contenido del email
     const emailContent = `
 Nueva solicitud de cotización AgriVolt
 
@@ -59,16 +76,14 @@ Hora: ${new Date().toLocaleTimeString('es-MX')}
 IP: ${request.headers.get('x-forwarded-for') || 'No disponible'}
     `.trim()
 
-    // Preparar datos para Mailgun
     const formData = new URLSearchParams()
     formData.append('from', `AgriVolt Web <noreply@${MAILGUN_DOMAIN}>`)
     formData.append('to', TO_EMAIL)
     formData.append('subject', `Nueva cotización AgriVolt - ${body.nombre}`)
     formData.append('html', generateAdminEmailHTML(body, emailContent, request))
     formData.append('text', emailContent)
-    formData.append('h:Reply-To', body.email)
+    formData.append('h:Reply-To', String(body.email))
 
-    // Enviar email via Mailgun
     const response = await fetch(`https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages`, {
       method: 'POST',
       headers: {
@@ -84,7 +99,6 @@ IP: ${request.headers.get('x-forwarded-for') || 'No disponible'}
       throw new Error(`Error en Mailgun: ${response.status}`)
     }
 
-    // Email de confirmación al cliente
     const confirmationContent = `
 Hola ${body.nombre},
 
@@ -105,9 +119,9 @@ Equipo AgriVolt
 
     const confirmationFormData = new URLSearchParams()
     confirmationFormData.append('from', `AgriVolt <noreply@${MAILGUN_DOMAIN}>`)
-    confirmationFormData.append('to', body.email)
+    confirmationFormData.append('to', String(body.email))
     confirmationFormData.append('subject', 'Confirmación - Solicitud de cotización AgriVolt')
-              confirmationFormData.append('html', generateCustomerEmailHTML(body))
+    confirmationFormData.append('html', generateCustomerEmailHTML(body))
     confirmationFormData.append('text', confirmationContent)
 
     await fetch(`https://api.mailgun.net/v3/${MAILGUN_DOMAIN}/messages`, {
@@ -130,7 +144,6 @@ Equipo AgriVolt
   }
 }
 
-// Función para generar email HTML para el administrador
 function generateAdminEmailHTML(body: Record<string, unknown>, textContent: string, request: NextRequest) {
   return `
 <!DOCTYPE html>
@@ -165,7 +178,7 @@ function generateAdminEmailHTML(body: Record<string, unknown>, textContent: stri
             </div>
             <div class="subtitle">Nueva solicitud de cotización</div>
         </div>
-        
+
         <div class="content">
             <div class="section">
                 <div class="section-title">📋 Datos de Contacto</div>
@@ -244,7 +257,6 @@ function generateAdminEmailHTML(body: Record<string, unknown>, textContent: stri
   `
 }
 
-// Función para generar email HTML para el cliente
 function generateCustomerEmailHTML(body: Record<string, unknown>) {
   return `
 <!DOCTYPE html>
@@ -279,10 +291,10 @@ function generateCustomerEmailHTML(body: Record<string, unknown>) {
             </div>
             <div class="subtitle">Confirmación de solicitud</div>
         </div>
-        
+
         <div class="content">
             <div class="greeting">¡Hola ${body.nombre}!</div>
-            
+
             <div class="message">
                 <p>Gracias por tu interés en <strong>AgriVolt</strong>. Hemos recibido tu solicitud de cotización y nos pondremos en contacto contigo en menos de <strong>24 horas hábiles</strong>.</p>
             </div>

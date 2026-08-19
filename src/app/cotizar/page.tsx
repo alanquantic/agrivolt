@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { useFormToken } from '@/hooks/use-form-token'
 
 interface FormData {
   nombre: string
@@ -53,6 +54,8 @@ export default function CotizarPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
+  const honeypotRef = useRef<HTMLInputElement>(null)
+  const formToken = useFormToken()
 
   const paises = [
     'México', 'Colombia', 'Argentina', 'Chile', 'Perú', 'Ecuador', 'Bolivia', 
@@ -125,7 +128,9 @@ export default function CotizarPage() {
       const submissionData = {
         ...formData,
         cultivo: formData.cultivo.includes('Otros') ? [...formData.cultivo.filter(c => c !== 'Otros'), formData.cultivoOtro].join(', ') : formData.cultivo.join(', '),
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
+        form_token: formToken,
+        company_website: honeypotRef.current?.value ?? '',
       }
 
       // Enviar formulario a la API route (Mailgun)
@@ -284,6 +289,23 @@ export default function CotizarPage() {
 
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot invisible: fuera de tabulación, lectores de pantalla y autofill. */}
+              <div
+                aria-hidden="true"
+                style={{ position: 'absolute', left: '-9999px', top: '-9999px', width: 1, height: 1, overflow: 'hidden' }}
+              >
+                <label htmlFor="company_website">Sitio web de la empresa</label>
+                <input
+                  ref={honeypotRef}
+                  id="company_website"
+                  name="company_website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  defaultValue=""
+                />
+              </div>
+
               {/* Formulario breve */}
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
